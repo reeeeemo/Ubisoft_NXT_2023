@@ -40,8 +40,12 @@
     <ClCompile Include="MenuScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="MainScene.cpp" />
-    <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="EndScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -89,8 +93,12 @@
     <ClInclude Include="MenuScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="MainScene.h" />
-    <ClInclude Include="EndScene.h" />
+    <ClInclude Include="EndScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">

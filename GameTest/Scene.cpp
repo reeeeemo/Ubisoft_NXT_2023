@@ -35,7 +35,11 @@ void CScene::RenderCurrentScene()
 
 void CScene::Exit()
 {
-
+	// Clearing up memory before exit of program!
+	for (uint32_t i = 0; i < CScene::NUM_SCENES; i++)
+	{
+		delete s_scenes[i];
+	}
 }
 
 void CScene::OnEnter()

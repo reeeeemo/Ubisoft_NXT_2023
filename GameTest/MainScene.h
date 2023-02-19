@@ -13,6 +13,7 @@ public:
 	void HandleEvents() override;
 private:
 	void OnEnter() override;
+	//std::array<>
 };
 
 #endif // !__MAINSCENE_H__

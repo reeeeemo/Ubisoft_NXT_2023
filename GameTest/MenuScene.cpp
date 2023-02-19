@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MenuScene.h"
 
+
 void CMenuScene::Update()
 {
 }

@@ -4,6 +4,7 @@
 
 #include <array>
 #include "app/app.h"
+#include "Point.h"
 
 class CScene
 {
