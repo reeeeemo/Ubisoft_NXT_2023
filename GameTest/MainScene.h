@@ -1,13 +1,12 @@
 #pragma once
-#ifndef __MENUSCREEN_H__
-#define __MENUSCREEN_H__
-
 #include "Scene.h"
+#ifndef __MAINSCENE_H__
+#define __MAINSCENE_H__
 
-class CMenuScene : public CScene
+class CMainScene : public CScene
 {
 public:
-	CMenuScene() = default;
+	CMainScene() = default;
 
 	void Update() override;
 	void Render() override;
@@ -16,4 +15,5 @@ private:
 	void OnEnter() override;
 };
 
-#endif // !__MENUSCREEN_H__
+#endif // !__MAINSCENE_H__
+

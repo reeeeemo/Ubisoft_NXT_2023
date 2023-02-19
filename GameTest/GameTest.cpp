@@ -38,7 +38,7 @@ void Init()
 //------------------------------------------------------------------------
 void Update(float deltaTime)
 {
-
+	CScene::UpdateCurrentScene();
 }
 
 //------------------------------------------------------------------------
@@ -47,8 +47,7 @@ void Update(float deltaTime)
 //------------------------------------------------------------------------
 void Render()
 {
-    //glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Black and opaque
-    App::DrawQuad(-0.5f, -0.5f, 0.0f, -0.5f, 0.5f, 0.0f, 0.5f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 1.0f, 0, 0);
+	CScene::RenderCurrentScene();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
@@ -56,5 +55,5 @@ void Render()
 //------------------------------------------------------------------------
 void Shutdown()
 {
-	// Probably a scene shutdown here.
+	CScene::Exit();
 }

@@ -3,11 +3,13 @@
 #define __SCENE_H__
 
 #include <array>
+#include "app/app.h"
 
 class CScene
 {
 public:
 	CScene();
+	virtual ~CScene();
 
 	// Scene Lifecycle functions.
 	virtual void Update() = 0;
@@ -19,9 +21,9 @@ public:
 	static void RenderCurrentScene();
 
 	static void Exit();
-protected: // proyected
-	virtual void OnEnter() = 0;
-	virtual void OnExit() = 0;
+protected: 
+	virtual void OnEnter();
+	virtual void OnExit();
 
 
 	enum EScenes
@@ -32,9 +34,9 @@ protected: // proyected
 		NUM_SCENES
 	};
 
-	std::array<EScenes*, NUM_SCENES> s_scenes;
+	static std::array<CScene*, NUM_SCENES> s_scenes;
 
-	static CScene* current_scene;
+	static CScene* s_current_scene;
 };
 
 #endif // !__SCENE_H__
