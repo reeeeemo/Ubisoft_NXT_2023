@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GameTest.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\main.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleController.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleSound.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleSprite.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\TextureLoader.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStatsGenerator.cpp">
+      <Filter>PlayerGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="App\app.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App\app.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppSettings.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\main.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleController.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleSound.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleSprite.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\TextureLoader.h">
+      <Filter>Ubisoft API</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStatsGenerator.h">
+      <Filter>PlayerGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Ubisoft API">
+      <UniqueIdentifier>{4fb83787-d553-4275-8042-c0b7449bcb05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayerGenerator">
+      <UniqueIdentifier>{8757826d-637a-49ba-90bf-b9350ff9152d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{f31c2ce7-29bb-4e92-bdab-844ce095964d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{2fab9581-a2ef-4392-872d-aab031882dd6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>Ubisoft API</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

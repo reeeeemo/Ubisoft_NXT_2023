@@ -1,0 +1,25 @@
+﻿  stdafx.cpp
+  app.cpp
+  main.cpp
+  SimpleController.cpp
+  SimpleSound.cpp
+  SimpleSprite.cpp
+  TextureLoader.cpp
+  GameTest.cpp
+D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\GameTest.cpp(12,10): fatal error C1083: Cannot open include file: 'CScene.h': No such file or directory
+  Matrix.cpp
+D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Matrix.cpp(7,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Matrix.cpp(8,20): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+  MenuScene.cpp
+  PlayerStatsGenerator.cpp
+  Point.cpp
+  Scene.cpp
+  Generating Code...
