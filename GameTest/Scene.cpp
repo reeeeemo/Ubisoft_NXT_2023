@@ -26,6 +26,7 @@ void CScene::Init()
 void CScene::UpdateCurrentScene()
 {
 	s_current_scene->Update();
+	s_current_scene->HandleEvents();
 }
 
 void CScene::RenderCurrentScene()

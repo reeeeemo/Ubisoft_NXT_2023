@@ -1,9 +1,2 @@
-﻿  EndScene.cpp
-  GameTest.cpp
-  MainScene.cpp
-  MenuScene.cpp
-  Scene.cpp
-  Generating Code...
-  GameTest.vcxproj -> D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\x64\Debug\GameTest.exe
-  D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\\GameTest\glut\bin\x64\freeglut.dll
-  1 File(s) copied
+﻿  MainScene.cpp
+  GameTest.vcxproj -> E:\Ascending Flags\Ubisoft_NXT_2023\x64\Debug\GameTest.exe
