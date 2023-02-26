@@ -8,7 +8,12 @@
 template<typename Component>
 class ComponentManager
 {
+public:
 
+private:
+	// Storing the maps we need for entities
+	std::vector<Component> components;
+	
 };
 
 #endif // !__COMPONENTMANAGER_H__

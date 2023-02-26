@@ -7,7 +7,7 @@ void CMainScene::Update()
 
 void CMainScene::Render()
 {
-	App::DrawQuad(-0.5f, -0.5f, 0.0f, -0.5f, 0.5f, 0.0f, 0.5f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0, 1.0f, 0);
+	App::DrawQuad(-0.05f, -0.05f, 0.0f, -0.05f, 0.05f, 0.0f, 0.05f, 0.05f, 0.0f, 0.05f, -0.05f, 0.0f, 0, 1.0f, 0);
 }
 
 void CMainScene::HandleEvents()
