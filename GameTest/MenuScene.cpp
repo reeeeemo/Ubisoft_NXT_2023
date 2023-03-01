@@ -19,7 +19,13 @@ void CMenuScene::HandleEvents()
 
 void CMenuScene::OnEnter()
 {
-	
+	// Initializing the player
+	const auto player = CreateEntity();
+	s_entities.push_back(player);
+	if (!s_positions.Contains((player)))
+	{
+		s_positions.Create(player);
+	}
 }
 
 void CMenuScene::OnExit() {

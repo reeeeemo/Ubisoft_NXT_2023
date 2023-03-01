@@ -43,8 +43,8 @@
     <ClCompile Include="MainScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="ComponentManager.cpp">
-      <Filter>Entities</Filter>
+    <ClCompile Include="Position.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +97,13 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="ComponentManager.h">
-      <Filter>Entities</Filter>
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,7 +116,7 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{2fab9581-a2ef-4392-872d-aab031882dd6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Entities">
+    <Filter Include="Components">
       <UniqueIdentifier>{29e920c5-4931-4300-97c6-99ba53ae0906}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

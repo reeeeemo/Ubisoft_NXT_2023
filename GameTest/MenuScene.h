@@ -15,7 +15,6 @@ public:
 private:
 	void OnEnter() override;
 	void OnExit() override;
-
 };
 
 #endif // !__MENUSCREEN_H__

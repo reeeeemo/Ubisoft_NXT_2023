@@ -5,6 +5,7 @@
 #include "MainScene.h"
 #include "EndScene.h"
 
+// Static initializations.
 std::array<CScene*, CScene::NUM_SCENES> CScene::s_scenes;
 
 CScene* CScene::s_current_scene = nullptr;	
@@ -12,6 +13,9 @@ CScene* CScene::s_current_scene = nullptr;
 CScene::CScene() = default;
 
 CScene::~CScene() = default;
+
+std::vector<Entity> CScene::s_entities; // All of the entities in the scene
+ComponentManager<CPosition>& CScene::s_positions = ComponentManager<CPosition>(); // Position manager for all entities!
 
 void CScene::Init()
 {

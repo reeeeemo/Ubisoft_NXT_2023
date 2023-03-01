@@ -5,6 +5,7 @@
 #include <array>
 #include "app/app.h"
 #include "Point.h"
+#include "ComponentManager.h"
 
 class CScene
 {
@@ -22,11 +23,12 @@ public:
 	static void RenderCurrentScene();
 
 	static void Exit();
-protected: 
+protected:
+	// Scene Functions
 	virtual void OnEnter();
 	virtual void OnExit();
 
-
+	// Scene variables
 	enum EScenes
 	{
 		MAIN_MENU,
@@ -38,6 +40,11 @@ protected:
 	static std::array<CScene*, NUM_SCENES> s_scenes;
 
 	static CScene* s_current_scene;
+
+	// Game-Specific Variables
+	static std::vector<Entity> s_entities; // All of the entities in the scene
+	static ComponentManager<CPosition>& s_positions; // Manager for all positions
+
 };
 
 #endif // !__SCENE_H__
