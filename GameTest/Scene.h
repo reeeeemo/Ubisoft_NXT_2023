@@ -44,6 +44,7 @@ protected:
 	// Game-Specific Variables
 	static std::vector<Entity> s_entities; // All of the entities in the scene
 	static ComponentManager<CPosition>& s_positions; // Manager for all positions
+	static const Entity player; // Player entity.
 
 };
 

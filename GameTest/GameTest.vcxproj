@@ -187,6 +187,7 @@
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityRenderer.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Matrix.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="App\SimpleSprite.cpp" />
     <ClCompile Include="App\TextureLoader.cpp" />
     <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="EntityRenderer.cpp" />
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Matrix.cpp" />

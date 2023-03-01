@@ -46,6 +46,9 @@
     <ClCompile Include="Position.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="EntityRenderer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -103,6 +106,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Position.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityRenderer.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

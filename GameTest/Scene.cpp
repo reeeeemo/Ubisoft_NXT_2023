@@ -16,6 +16,7 @@ CScene::~CScene() = default;
 
 std::vector<Entity> CScene::s_entities; // All of the entities in the scene
 ComponentManager<CPosition>& CScene::s_positions = ComponentManager<CPosition>(); // Position manager for all entities!
+const Entity CScene::player = CreateEntity();
 
 void CScene::Init()
 {

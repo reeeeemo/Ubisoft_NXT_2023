@@ -15,6 +15,8 @@ public:
 private:
 	void OnEnter() override;
 	void OnExit() override;
+
+	// Testing Variables
 };
 
 #endif // !__MENUSCREEN_H__
