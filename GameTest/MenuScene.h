@@ -9,7 +9,7 @@ class CMenuScene : public CScene
 public:
 	CMenuScene() = default;
 
-	void Update() override;
+	void Update(float deltaTime) override;
 	void Render() override;
 	void HandleEvents() override;
 private:

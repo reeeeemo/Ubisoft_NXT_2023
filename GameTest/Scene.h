@@ -14,12 +14,12 @@ public:
 	virtual ~CScene();
 
 	// Scene Lifecycle functions.
-	virtual void Update() = 0;
+	virtual void Update(float deltaTime) = 0;
 	virtual void Render() = 0;
 	virtual void HandleEvents() = 0;
 
 	static void Init();
-	static void UpdateCurrentScene();
+	static void UpdateCurrentScene(float deltaTime);
 	static void RenderCurrentScene();
 
 	static void Exit();
@@ -44,6 +44,7 @@ protected:
 	// Game-Specific Variables
 	static std::vector<Entity> s_entities; // All of the entities in the scene
 	static ComponentManager<CPosition>& s_positions; // Manager for all positions
+	static ComponentManager<CEntityRenderer>& s_renderers; // Manager for all entity renderers
 	static const Entity player; // Player entity.
 
 };

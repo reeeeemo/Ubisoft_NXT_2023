@@ -8,7 +8,7 @@ class CMainScene : public CScene
 public:
 	CMainScene() = default;
 
-	void Update() override;
+	void Update(float deltaTime) override;
 	void Render() override;
 	void HandleEvents() override;
 private:

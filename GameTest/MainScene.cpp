@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MainScene.h"
 
-void CMainScene::Update()
+void CMainScene::Update(float deltaTime)
 {
 }
 

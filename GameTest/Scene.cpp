@@ -16,6 +16,7 @@ CScene::~CScene() = default;
 
 std::vector<Entity> CScene::s_entities; // All of the entities in the scene
 ComponentManager<CPosition>& CScene::s_positions = ComponentManager<CPosition>(); // Position manager for all entities!
+ComponentManager<CEntityRenderer>& CScene::s_renderers = ComponentManager<CEntityRenderer>(); // Manager for all entity renderers.
 const Entity CScene::player = CreateEntity();
 
 void CScene::Init()
@@ -28,9 +29,9 @@ void CScene::Init()
 	s_current_scene->OnEnter();
 }
 
-void CScene::UpdateCurrentScene()
+void CScene::UpdateCurrentScene(float deltaTime)
 {
-	s_current_scene->Update();
+	s_current_scene->Update(deltaTime);
 	s_current_scene->HandleEvents();
 }
 

@@ -8,7 +8,7 @@ class CEndScene : public CScene
 public:
 	CEndScene() = default;
 
-	void Update() override;
+	void Update(float deltaTime) override;
 	void Render() override;
 	void HandleEvents() override;
 private:

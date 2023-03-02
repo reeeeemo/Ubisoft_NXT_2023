@@ -38,7 +38,7 @@ void Init()
 //------------------------------------------------------------------------
 void Update(float deltaTime)
 {
-	CScene::UpdateCurrentScene();
+	CScene::UpdateCurrentScene(deltaTime);
 }
 
 //------------------------------------------------------------------------

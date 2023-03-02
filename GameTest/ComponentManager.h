@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include "Entity.h"
 #include "Position.h"
+#include "EntityRenderer.h"
 
 // Create a component manager for each "component" (position, rotation, etc) of each entity in the program.
 template<typename Component>

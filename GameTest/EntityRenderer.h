@@ -9,7 +9,8 @@ struct CEntityRenderer
 	 *  Functions
 	*/
 	CEntityRenderer();
-
+	void Render();
+	void CreateEntitySprite(const char* file_name, int col, int row);
 	/*
 	 *	Variables
 	 */
