@@ -12,7 +12,7 @@ void CMainScene::Render()
 
 void CMainScene::HandleEvents()
 {
-	if (App::IsKeyPressed('A')) {
+	if (App::IsKeyPressed('2')) {
 		CScene::s_current_scene = s_scenes[MAIN_MENU];
 	}
 }

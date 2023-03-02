@@ -22,15 +22,6 @@
     <ClCompile Include="App\TextureLoader.cpp">
       <Filter>Ubisoft API</Filter>
     </ClCompile>
-    <ClCompile Include="App\app.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Point.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -49,6 +40,16 @@
     <ClCompile Include="EntityRenderer.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Math\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="App\app.cpp">
+      <Filter>Ubisoft API</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -81,12 +82,6 @@
     <ClInclude Include="Math.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Point.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
@@ -111,6 +106,13 @@
     <ClInclude Include="EntityRenderer.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Math\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">
@@ -124,6 +126,12 @@
     </Filter>
     <Filter Include="Components">
       <UniqueIdentifier>{29e920c5-4931-4300-97c6-99ba53ae0906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Components">
+      <UniqueIdentifier>{fea4c05e-2a1b-4f5e-94fa-80790bc8b93d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{c8f780db-1728-4cce-86c2-3f2688edd644}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

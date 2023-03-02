@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "EntityRenderer.h"
 
+
 CEntityRenderer::CEntityRenderer()
 {
 }
 
 /* Renders sprite previously created. */
-void CEntityRenderer::Render()
+void CEntityRenderer::Render() const
 {
 	entitySprite->Draw();
 }
@@ -22,4 +23,18 @@ void CEntityRenderer::CreateEntitySprite(const char* file_name, int col, int row
 	}
 
 }
+
+/* Updates sprite and position of sprite. */
+void CEntityRenderer::Update(float deltaTime, CPoint sprite_position) const
+{
+	entitySprite->Update(deltaTime);
+	entitySprite->SetPosition(sprite_position.x, sprite_position.y);
+}
+
+/* When sprite is being destroyed*/
+void CEntityRenderer::OnDestroy() const
+{
+	delete entitySprite;
+}
+
 // entitySprite = App::CreateSprite(".\\Assets\\cow.bmp", 3, 2);

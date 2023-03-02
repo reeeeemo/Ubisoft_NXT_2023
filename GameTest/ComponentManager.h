@@ -94,7 +94,7 @@ public:
 			{
 				// Move dead element to last element, essentially swapping them.
 				components[index] = std::move(components.back());
-				entities[index] = std::move(entities.back());
+				entities[index] = entities.back();
 
 				lookup[entities[index]] = index;
 			}

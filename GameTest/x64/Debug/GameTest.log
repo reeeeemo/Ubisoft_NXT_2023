@@ -1,2 +1,10 @@
-﻿  MenuScene.cpp
+﻿  EndScene.cpp
+  EntityRenderer.cpp
+  GameTest.cpp
+  MainScene.cpp
+  MenuScene.cpp
+  Point.cpp
+  Position.cpp
+  Scene.cpp
+  Generating Code...
   GameTest.vcxproj -> D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\x64\Debug\GameTest.exe

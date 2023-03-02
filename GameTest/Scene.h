@@ -3,6 +3,7 @@
 #define __SCENE_H__
 
 #include <array>
+#include <memory>
 #include "app/app.h"
 #include "Point.h"
 #include "ComponentManager.h"

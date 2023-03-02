@@ -1,6 +1,4 @@
 #pragma once
-#include "Matrix.h"
-#include "Math.h"
 
 struct CPoint
 {
@@ -11,7 +9,6 @@ struct CPoint
 	CPoint operator+(const CPoint&) const;
 	CPoint operator-(const CPoint&) const;
 	CPoint operator*(float scalar) const;
-	CPoint operator*(const Matrix4&); // 4x4 Matrix
 	CPoint operator/(float scalar) const;
 	
 	void operator+=(const CPoint&);

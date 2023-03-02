@@ -190,10 +190,11 @@
     <ClInclude Include="EntityRenderer.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Math.h" />
-    <ClInclude Include="Matrix.h" />
     <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -209,10 +210,11 @@
     <ClCompile Include="EntityRenderer.cpp" />
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="MainScene.cpp" />
-    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MenuScene.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

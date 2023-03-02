@@ -46,7 +46,10 @@ void CScene::Exit()
 	for (uint32_t i = 0; i < CScene::NUM_SCENES; i++)
 	{
 		delete s_scenes[i];
+		s_scenes[i] = nullptr;
 	}
+	s_current_scene = nullptr;
+
 }
 
 void CScene::OnEnter()
@@ -55,6 +58,7 @@ void CScene::OnEnter()
 
 void CScene::OnExit()
 {
+	
 }
 
 
