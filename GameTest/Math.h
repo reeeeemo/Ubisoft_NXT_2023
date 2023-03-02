@@ -3,6 +3,7 @@
 
 #include "App/AppSettings.h"
 #include "Point.h"
+#include <cmath>
 
 namespace Math {
 	inline float DotProduct(const CPoint& a, const CPoint& b) {
@@ -11,5 +12,16 @@ namespace Math {
 
 	inline float ToRadians(float degrees) {
 		return degrees * PI / 180;
+	}
+
+	inline CPoint AbsValue(CPoint p1)
+	{
+		const CPoint abs_point = CPoint(abs(p1.x), abs(p1.y), abs(p1.z), 1.0f);
+		return abs_point;
+	}
+
+	inline double AbsValue(double value)
+	{
+		return abs(value);
 	}
 }

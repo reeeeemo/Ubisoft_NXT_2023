@@ -10,7 +10,7 @@ public:
 
 	void Update(float deltaTime) override;
 	void Render() override;
-	void HandleEvents() override;
+	void HandleEvents(float deltaTime) override;
 private:
 	void OnEnter() override;
 };

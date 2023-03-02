@@ -9,7 +9,7 @@ void CEndScene::Render()
 {
 }
 
-void CEndScene::HandleEvents()
+void CEndScene::HandleEvents(float deltaTime)
 {
 }
 

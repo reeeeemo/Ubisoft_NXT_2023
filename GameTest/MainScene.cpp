@@ -10,7 +10,7 @@ void CMainScene::Render()
 	App::DrawQuad(-0.05f, -0.05f, 0.0f, -0.05f, 0.05f, 0.0f, 0.05f, 0.05f, 0.0f, 0.05f, -0.05f, 0.0f, 0, 1.0f, 0);
 }
 
-void CMainScene::HandleEvents()
+void CMainScene::HandleEvents(float deltaTime)
 {
 	if (App::IsKeyPressed('2')) {
 		CScene::s_current_scene = s_scenes[MAIN_MENU];

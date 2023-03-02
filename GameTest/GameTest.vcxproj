@@ -191,7 +191,6 @@
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MenuScene.h" />
-    <ClInclude Include="Physics.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Rigidbody.h" />
@@ -211,7 +210,6 @@
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="MenuScene.cpp" />
-    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Rigidbody.cpp" />

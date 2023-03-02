@@ -46,10 +46,9 @@
     <ClCompile Include="App\app.cpp">
       <Filter>Ubisoft API</Filter>
     </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Physics</Filter>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Components\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="Rigidbody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -109,10 +108,9 @@
     <ClInclude Include="Point.h">
       <Filter>Math\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>Physics</Filter>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Components\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Rigidbody.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">
@@ -130,7 +128,7 @@
     <Filter Include="Math\Components">
       <UniqueIdentifier>{fea4c05e-2a1b-4f5e-94fa-80790bc8b93d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Physics">
+    <Filter Include="Components\Physics">
       <UniqueIdentifier>{c8f780db-1728-4cce-86c2-3f2688edd644}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

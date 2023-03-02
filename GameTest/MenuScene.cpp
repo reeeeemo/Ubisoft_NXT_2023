@@ -15,7 +15,9 @@ void CMenuScene::Update(float deltaTime)
 	for (Entity entity : s_entities) {
 		if (s_renderers.Contains(entity))
 		{
-			s_renderers.GetComponent(entity)->Update(deltaTime, s_positions.GetComponent(entity)->position);
+			const CPoint current_pos = s_positions.GetComponent(entity)->position;
+			s_renderers.GetComponent(entity)->Update(deltaTime, current_pos);
+			s_positions.GetComponent(entity)->SetPosition(s_rigidbodies.GetComponent(entity)->AddForce(current_pos, deltaTime));
 		}
 	}
 }
@@ -28,7 +30,7 @@ void CMenuScene::Render()
 	}
 }
 
-void CMenuScene::HandleEvents()
+void CMenuScene::HandleEvents(float deltaTime)
 {
 	if (App::IsKeyPressed('1')) {
 		CScene::s_current_scene = s_scenes[MAIN];
@@ -36,12 +38,13 @@ void CMenuScene::HandleEvents()
 	if (App::IsKeyPressed('A')) // If player presses the "left" key
 	{
 		s_renderers.GetComponent(player)->entitySprite->SetAnimation(ANIM_WALK);
-		s_positions.GetComponent(player)->position.x -= 2.0f;
+		s_rigidbodies.GetComponent(player)->velocity -= CPoint(0.01f, 0.0f, 0.0f, 1.0f);
 	}
 	else if (App::IsKeyPressed('D')) // If player presses the "right" key
 	{
 		s_renderers.GetComponent(player)->entitySprite->SetAnimation(ANIM_WALK);
-		s_positions.GetComponent(player)->position.x += 2.0f;
+		s_rigidbodies.GetComponent(player)->velocity += CPoint(0.01f, 0.0f, 0.0f, 1.0f);
+		
 	}
 	else
 	{
@@ -61,6 +64,10 @@ void CMenuScene::OnEnter()
 	if (!s_renderers.Contains(player))
 	{
 		s_renderers.Create(player);
+	}
+	if (!s_rigidbodies.Contains(player))
+	{
+		s_rigidbodies.Create(player);
 	}
 
 	// Initializing player animations + setting position
