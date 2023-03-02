@@ -18,6 +18,7 @@ void CMenuScene::Update(float deltaTime)
 			const CPoint current_pos = s_positions.GetComponent(entity)->position;
 			s_renderers.GetComponent(entity)->Update(deltaTime, current_pos);
 			s_positions.GetComponent(entity)->SetPosition(s_rigidbodies.GetComponent(entity)->AddForce(current_pos, deltaTime));
+			s_rigidbodies.GetComponent(player)->Update(deltaTime);
 		}
 	}
 }
@@ -35,15 +36,25 @@ void CMenuScene::HandleEvents(float deltaTime)
 	if (App::IsKeyPressed('1')) {
 		CScene::s_current_scene = s_scenes[MAIN];
 	}
+	if (App::IsKeyPressed('W')) // If player presses the "up" key
+	{
+		s_renderers.GetComponent(player)->entitySprite->SetAnimation(ANIM_WALK);
+		s_rigidbodies.GetComponent(player)->velocity += CPoint(0.0f, 0.1f, 0.0f, 1.0f);
+	} else if (App::IsKeyPressed('S')) // If player presses the "down" key
+	{
+		s_renderers.GetComponent(player)->entitySprite->SetAnimation(ANIM_WALK);
+		s_rigidbodies.GetComponent(player)->velocity -= CPoint(0.0f, 0.1f, 0.0f, 1.0f);
+	}
+
 	if (App::IsKeyPressed('A')) // If player presses the "left" key
 	{
 		s_renderers.GetComponent(player)->entitySprite->SetAnimation(ANIM_WALK);
-		s_rigidbodies.GetComponent(player)->velocity -= CPoint(0.01f, 0.0f, 0.0f, 1.0f);
+		s_rigidbodies.GetComponent(player)->velocity -= CPoint(0.1f, 0.0f, 0.0f, 1.0f);
 	}
 	else if (App::IsKeyPressed('D')) // If player presses the "right" key
 	{
 		s_renderers.GetComponent(player)->entitySprite->SetAnimation(ANIM_WALK);
-		s_rigidbodies.GetComponent(player)->velocity += CPoint(0.01f, 0.0f, 0.0f, 1.0f);
+		s_rigidbodies.GetComponent(player)->velocity += CPoint(0.1f, 0.0f, 0.0f, 1.0f);
 		
 	}
 	else

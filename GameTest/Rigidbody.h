@@ -3,7 +3,7 @@
 #define __RIGIDBODY_H__
 #include "Point.h"
 
-constexpr double MAX_ACCELERATION = 2.0f;
+constexpr double MAX_ACCELERATION = 0.5;
 
 struct CRigidbody
 {
@@ -12,12 +12,14 @@ struct CRigidbody
 	 */
 	CRigidbody();
 	CPoint AddForce(CPoint position, float deltaTime);
+	void Update(float deltaTime);
 	/*
 	 * Variables
 	 */
 	CPoint velocity;
-	double acceleration;
+	CPoint acceleration;
 	double mass;
+	double drag;
 
 };
 
