@@ -184,6 +184,8 @@
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
     <ClInclude Include="App\TextureLoader.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Entity.h" />
@@ -193,8 +195,10 @@
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="RestartButton.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="StartButton.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -205,6 +209,8 @@
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
     <ClCompile Include="App\TextureLoader.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="EntityRenderer.cpp" />
     <ClCompile Include="GameTest.cpp" />
@@ -212,8 +218,10 @@
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="RestartButton.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

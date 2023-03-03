@@ -50,7 +50,6 @@ void CScene::Exit()
 		s_scenes[i] = nullptr;
 	}
 	s_current_scene = nullptr;
-
 }
 
 void CScene::OnEnter()

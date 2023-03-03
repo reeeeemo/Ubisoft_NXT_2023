@@ -49,6 +49,16 @@
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Components\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="RestartButton.cpp">
+      <Filter>UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="StartButton.cpp">
+      <Filter>UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -111,6 +121,16 @@
     <ClInclude Include="Rigidbody.h">
       <Filter>Components\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="StartButton.h">
+      <Filter>UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="RestartButton.h">
+      <Filter>UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">
@@ -130,6 +150,12 @@
     </Filter>
     <Filter Include="Components\Physics">
       <UniqueIdentifier>{c8f780db-1728-4cce-86c2-3f2688edd644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{63dd7a6a-36a4-477a-a4b3-e46dd1fbce88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Buttons">
+      <UniqueIdentifier>{ce6f1f0f-6394-41c8-8133-ce4c8283385e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -37,4 +37,3 @@ void CEntityRenderer::OnDestroy() const
 	delete entitySprite;
 }
 
-// entitySprite = App::CreateSprite(".\\Assets\\cow.bmp", 3, 2);

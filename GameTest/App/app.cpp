@@ -14,6 +14,8 @@
 //---------------------------------------------------------------------------------
 // Utils and externals for system info.
 
+static bool DEBUG_MODE = false;
+
 namespace App
 {
 	void DrawQuad(float sx, float sy, float sz, float ex, float ey, float ez, float cx, float cy, float cz, float px, float py, float pz, float r, float g, float b)

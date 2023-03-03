@@ -3,7 +3,7 @@
 
 #include <string>
 
-/* Staetes */
+/* States */
 enum AnimationStates
 {
 	ANIM_IDLE,
