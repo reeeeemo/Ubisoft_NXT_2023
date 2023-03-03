@@ -7,6 +7,17 @@
 #include "app/app.h"
 #include "Point.h"
 #include "ComponentManager.h"
+#include "Button.h"
+#include "TileManager.h"
+
+enum EScenes
+{
+	MAIN_MENU,
+	MAIN,
+	END,
+	NUM_SCENES
+};
+
 
 class CScene
 {
@@ -26,19 +37,14 @@ public:
 
 	static void Exit();
 
+	static void ChangeScenes(EScenes scene);
 protected:
 	// Scene Functions
 	virtual void OnEnter();
 	virtual void OnExit();
 
 	// Scene variables
-	enum EScenes
-	{
-		MAIN_MENU,
-		MAIN,
-		END,
-		NUM_SCENES
-	};
+
 
 	static std::array<CScene*, NUM_SCENES> s_scenes;
 

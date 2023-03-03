@@ -6,7 +6,7 @@
 typedef uint32_t Entity;
 static constexpr Entity INVALID_ENTITY = 0;
 
-/* Creates a Uint32_t that will be the player's ID. */
+/* Creates a Uint32_t that will be the entities ID. */
 Entity inline CreateEntity()
 {
 	static Entity next = 0;

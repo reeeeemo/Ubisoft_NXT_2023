@@ -49,7 +49,6 @@ void CButton::Init()
 
 	s_buttonPositions.GetComponent(s_buttons[START]->id)->SetPosition(start_button_pos);
 	//s_buttonPositions.GetComponent(s_buttons[RESTART]->id)->SetPosition(restart_button_pos);
-	s_buttons[START]->isEnabled = true;
 }
 
 /* Checks for mouse movement and if the buttons that are currently active have been clicked. */
@@ -95,4 +94,16 @@ void CButton::Exit()
 void CButton::CheckForMouseInput(CButton* buttonToCheck)
 {
 	App::GetMousePos(mouseX, mouseY);
+}
+
+void CButton::EnableButton(EButtons button)
+{
+	s_buttons[button]->OnEnter();
+	s_buttons[button]->isEnabled = true;
+}
+
+void CButton::DisableButton(EButtons button)
+{
+	s_buttons[button]->OnExit();
+	s_buttons[button]->isEnabled = false;
 }

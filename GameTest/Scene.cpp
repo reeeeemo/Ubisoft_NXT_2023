@@ -6,7 +6,7 @@
 #include "EndScene.h"
 
 // Static initializations.
-std::array<CScene*, CScene::NUM_SCENES> CScene::s_scenes;
+std::array<CScene*, NUM_SCENES> CScene::s_scenes;
 
 CScene* CScene::s_current_scene = nullptr;	
 
@@ -45,12 +45,19 @@ void CScene::RenderCurrentScene()
 void CScene::Exit()
 {
 	// Clearing up memory before exit of program!
-	for (uint32_t i = 0; i < CScene::NUM_SCENES; i++)
+	for (uint32_t i = 0; i < NUM_SCENES; i++)
 	{
 		delete s_scenes[i];
 		s_scenes[i] = nullptr;
 	}
 	s_current_scene = nullptr;
+}
+
+void CScene::ChangeScenes(EScenes scene)
+{
+	s_current_scene->OnExit();
+	s_current_scene = s_scenes[scene];
+	s_current_scene->OnEnter();
 }
 
 void CScene::OnEnter()

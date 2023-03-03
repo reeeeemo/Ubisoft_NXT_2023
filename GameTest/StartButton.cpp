@@ -3,6 +3,7 @@
 
 void CStartButton::OnEnter()
 {
+
 }
 
 void CStartButton::OnExit()

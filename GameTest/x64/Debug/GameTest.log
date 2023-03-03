@@ -1,28 +1,13 @@
 ﻿  Button.cpp
-  Collider.cpp
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(42,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(43,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(44,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(47,7): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(48,7): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(50,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(50,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(50,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(51,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(51,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(51,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(52,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(52,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(52,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(53,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(53,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\GameTest\Collider.cpp(53,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   EndScene.cpp
   GameTest.cpp
   MainScene.cpp
   MenuScene.cpp
-  RestartButton.cpp
   Scene.cpp
-  StartButton.cpp
+  TileManager.cpp
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(38,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(38,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(43,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(43,50): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating Code...
-  GameTest.vcxproj -> D:\NEXT-API\UbisoftToronto-NEXT-API\NEXT-API\Ubisoft_NXT_2022\x64\Debug\GameTest.exe
+  GameTest.vcxproj -> E:\Ascending Flags\Ubisoft_NXT_2023\x64\Debug\GameTest.exe

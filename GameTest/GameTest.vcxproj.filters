@@ -64,6 +64,12 @@
     <ClCompile Include="BoxCollider.cpp">
       <Filter>Components\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="TileManager.cpp">
+      <Filter>Components\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Components\Tilemap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -108,9 +114,6 @@
     <ClInclude Include="MainScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="ComponentManager.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -141,6 +144,18 @@
     <ClInclude Include="BoxCollider.h">
       <Filter>Components\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentManager.h">
+      <Filter>Components\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TileManager.h">
+      <Filter>Components\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Components\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileTypes.h">
+      <Filter>Components\Tilemap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">
@@ -169,6 +184,12 @@
     </Filter>
     <Filter Include="UI\Buttons">
       <UniqueIdentifier>{ce6f1f0f-6394-41c8-8133-ce4c8283385e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Tilemap">
+      <UniqueIdentifier>{76189156-4a66-4502-a0d2-04b7d37279c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Managers">
+      <UniqueIdentifier>{d88be3e3-873b-4fc2-8f68-94c7d3cbb9ef}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

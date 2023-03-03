@@ -29,8 +29,8 @@
 //------------------------------------------------------------------------
 void Init()
 {
-	CScene::Init();
 	CButton::Init();
+	CScene::Init();
 }
 
 //------------------------------------------------------------------------
@@ -39,8 +39,8 @@ void Init()
 //------------------------------------------------------------------------
 void Update(float deltaTime)
 {
-	CScene::UpdateCurrentScene(deltaTime);
 	CButton::Update(deltaTime);
+	CScene::UpdateCurrentScene(deltaTime);
 }
 
 //------------------------------------------------------------------------
@@ -49,8 +49,8 @@ void Update(float deltaTime)
 //------------------------------------------------------------------------
 void Render()
 {
-	CScene::RenderCurrentScene();
 	CButton::Render();
+	CScene::RenderCurrentScene();
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
@@ -58,6 +58,6 @@ void Render()
 //------------------------------------------------------------------------
 void Shutdown()
 {
-	CScene::Exit();
 	CButton::Exit();
+	CScene::Exit();
 }

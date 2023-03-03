@@ -1,7 +1,9 @@
 #pragma once
-#include "Scene.h"
+
 #ifndef __MAINSCENE_H__
 #define __MAINSCENE_H__
+
+#include "Scene.h"
 
 class CMainScene : public CScene
 {
@@ -13,7 +15,7 @@ public:
 	void HandleEvents(float deltaTime) override;
 private:
 	void OnEnter() override;
-	//std::array<>
+	void OnExit() override;
 };
 
 #endif // !__MAINSCENE_H__

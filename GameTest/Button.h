@@ -27,6 +27,8 @@ public:
 	static void Render();
 	static void Exit();
 	static void CheckForMouseInput(CButton* buttonToCheck);
+	static void EnableButton(EButtons button);
+	static void DisableButton(EButtons button);
 
 	/*
 	 *  Variables
