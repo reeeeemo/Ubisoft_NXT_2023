@@ -7,19 +7,48 @@
 
 // Static variables initialization
 std::array<CButton*, NUM_BUTTONS> CButton::s_buttons;
-std::array<CSimpleSprite*, NUM_BUTTONS> CButton::s_buttonTextures;
+ComponentManager<CCollider>& CButton::s_buttonColliders = ComponentManager<CCollider>();
+ComponentManager<CPosition>& CButton::s_buttonPositions = ComponentManager<CPosition>();
+ComponentManager<CEntityRenderer>& CButton::s_buttonRenderers = ComponentManager<CEntityRenderer>();
 float CButton::mouseX;
 float CButton::mouseY;
 
+/* Initializes everything related to buttons. */
 void CButton::Init()
 {
 	s_buttons[START] = new CStartButton;
 	s_buttons[RESTART] = new CRestartButton;
+	s_buttons[START]->id = CreateEntity();
+	s_buttons[RESTART]->id = CreateEntity();
 
-	s_buttonTextures[START] = App::CreateSprite(".\\Assets\\PlayButton.bmp", 1 , 1);
-	s_buttonTextures[START]->SetScale(1.0f);
-	s_buttonTextures[RESTART] = App::CreateSprite(".\\Assets\\PlayButton.bmp", 1, 1);
+	// Creating components for each button (we don't need to check if they contain since they never existed before this.
+	s_buttonColliders.Create(s_buttons[START]->id);
+	s_buttonPositions.Create(s_buttons[START]->id);
+	s_buttonRenderers.Create(s_buttons[START]->id);
 
+	s_buttonRenderers.GetComponent(s_buttons[START]->id)->CreateEntitySprite(".\\Assets\\PlayButton.bmp", 1, 1);
+	//s_buttonRenderers.GetComponent(s_buttons[RESTART]->id)->CreateEntitySprite(".\\Assets\\PlayButton.bmp", 1, 1);
+
+	// Set Position and Collliders
+	// We only need to call these once since technically we are not going to be moving the button positions (I hope nothing "magical" happens to them o_o)
+	CPoint start_button_pos = CPoint(600.0f, 600.0f, 0.0f, 1.0f);
+	//CPoint restart_button_pos = CPoint(300.0f, 600.0f, 0.0f, 1.0f);
+	float buttonWidth = s_buttonRenderers.GetComponent(s_buttons[START]->id)->spriteWidth;
+	float buttonHeight = s_buttonRenderers.GetComponent(s_buttons[START]->id)->spriteHeight;
+
+	s_buttonColliders.GetComponent(s_buttons[START]->id)->SetColliderVerticies(start_button_pos, start_button_pos + CPoint(buttonWidth, 0.0f, 0.0f, 1.0f), 
+		start_button_pos + CPoint(buttonWidth, buttonHeight, 0.0f, 1.0f), start_button_pos + CPoint(0.0f, buttonHeight, 0.0f, 1.0f));
+
+
+	//buttonWidth = s_buttonRenderers.GetComponent(s_buttons[RESTART]->id)->spriteWidth;
+	//buttonHeight = s_buttonRenderers.GetComponent(s_buttons[RESTART]->id)->spriteHeight;
+
+
+	//s_buttonColliders.GetComponent(s_buttons[RESTART]->id)->SetColliderVerticies(restart_button_pos, restart_button_pos + CPoint(buttonWidth, 0.0f, 0.0f, 1.0f),
+	//	restart_button_pos + CPoint(buttonWidth, buttonHeight, 0.0f, 1.0f), restart_button_pos + CPoint(0.0f, buttonHeight, 0.0f, 1.0f));
+
+	s_buttonPositions.GetComponent(s_buttons[START]->id)->SetPosition(start_button_pos);
+	//s_buttonPositions.GetComponent(s_buttons[RESTART]->id)->SetPosition(restart_button_pos);
 	s_buttons[START]->isEnabled = true;
 }
 
@@ -31,7 +60,8 @@ void CButton::Update(float deltaTime)
 		if (s_buttons[i]->isEnabled == true)
 		{
 			CheckForMouseInput(s_buttons[i]);
-			s_buttonTextures[i]->Update(deltaTime);
+			s_buttonRenderers.GetComponent(s_buttons[i]->id)->Update(deltaTime, s_buttonPositions.GetComponent(s_buttons[i]->id)->position);
+			s_buttonColliders.GetComponent(s_buttons[i]->id)->IsColliding(mouseX, mouseY);
 		}
 	}
 }
@@ -43,8 +73,10 @@ void CButton::Render()
 	{
 		if (s_buttons[i]->isEnabled == true)
 		{
-			s_buttonTextures[i]->SetPosition(600.0f, 600.0f);
-			s_buttonTextures[i]->Draw();
+			if (true)
+			{
+				s_buttonColliders.GetComponent(s_buttons[i]->id)->DebugDrawCollider();
+			}
 		}
 	}
 }
@@ -56,11 +88,6 @@ void CButton::Exit()
 	{
 		delete s_buttons[i];
 		s_buttons[i] = nullptr;
-	}
-	for (int i = 0; i < s_buttonTextures.size() - 1; i++)
-	{
-		delete s_buttonTextures[i];
-		s_buttonTextures[i] = nullptr;
 	}
 }
 

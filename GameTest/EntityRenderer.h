@@ -1,7 +1,6 @@
 #pragma once
 #ifndef __ENTITYRENDERER_H__
 #define __ENTITYRENDERER_H__
-#include <memory>
 
 #include "App/app.h"
 #include "Point.h"
@@ -19,7 +18,9 @@ struct CEntityRenderer
 	/*
 	 *	Variables
 	 */
-	CSimpleSprite* entitySprite;
+	CSimpleSprite* entitySprite = nullptr;
+	float spriteWidth;
+	float spriteHeight;
 };
 
 #endif // !__ENTITYRENDERER_H__

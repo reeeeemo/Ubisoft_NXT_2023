@@ -9,6 +9,7 @@
 #include "Position.h"
 #include "EntityRenderer.h"
 #include "Rigidbody.h"
+#include "Collider.h"
 
 // Create a component manager for each "component" (position, rotation, etc) of each entity in the program.
 template<typename Component>

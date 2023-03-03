@@ -4,6 +4,7 @@
 
 #include "App/app.h"
 #include <array>
+#include "ComponentManager.h"
 
 enum EButtons
 {
@@ -42,10 +43,13 @@ protected:
 	/*
 	 * Variables
 	 */
+	Entity id;
 	bool isClicked = false;
 	bool isEnabled = false;
 	static std::array<CButton*, NUM_BUTTONS> s_buttons;
-	static std::array<CSimpleSprite*, NUM_BUTTONS> s_buttonTextures;
+	static ComponentManager<CCollider>& s_buttonColliders;
+	static ComponentManager<CPosition>& s_buttonPositions;
+	static ComponentManager<CEntityRenderer>& s_buttonRenderers;
 };
 
 #endif //!__BUTTON_H__

@@ -18,6 +18,7 @@ std::vector<Entity> CScene::s_entities; // All of the entities in the scene
 ComponentManager<CPosition>& CScene::s_positions = ComponentManager<CPosition>(); // Position manager for all entities!
 ComponentManager<CEntityRenderer>& CScene::s_renderers = ComponentManager<CEntityRenderer>(); // Manager for all entity renderers.
 ComponentManager<CRigidbody>& CScene::s_rigidbodies = ComponentManager<CRigidbody>(); // Manager for all entity rigidbodies (physics)
+ComponentManager<CCollider>& CScene::s_colliders = ComponentManager<CCollider>(); // Manager for all entity colliders
 const Entity CScene::player = CreateEntity();
 
 void CScene::Init()

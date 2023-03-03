@@ -20,6 +20,8 @@ void CEntityRenderer::CreateEntitySprite(const char* file_name, int col, int row
 	{
 		entitySprite->SetAngle(0.0f);
 		entitySprite->SetScale(1.0f); // Normal sprite size.
+		spriteWidth = entitySprite->GetWidth();
+		spriteHeight = entitySprite->GetHeight();
 	}
 
 }

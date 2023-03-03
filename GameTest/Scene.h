@@ -19,11 +19,13 @@ public:
 	virtual void Render() = 0;
 	virtual void HandleEvents(float deltaTime) = 0;
 
+	// Static functions
 	static void Init();
 	static void UpdateCurrentScene(float deltaTime);
 	static void RenderCurrentScene();
 
 	static void Exit();
+
 protected:
 	// Scene Functions
 	virtual void OnEnter();
@@ -47,6 +49,7 @@ protected:
 	static ComponentManager<CPosition>& s_positions; // Manager for all positions
 	static ComponentManager<CEntityRenderer>& s_renderers; // Manager for all entity renderers
 	static ComponentManager<CRigidbody>& s_rigidbodies; // Manager for all entity rigidbodies (physics)
+	static ComponentManager<CCollider>& s_colliders; // Manager for all entity colliders
 	static const Entity player; // Player entity.
 
 };

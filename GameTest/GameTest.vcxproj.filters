@@ -58,7 +58,12 @@
     <ClCompile Include="StartButton.cpp">
       <Filter>UI\Buttons</Filter>
     </ClCompile>
-    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Collider.cpp">
+      <Filter>Components\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Components\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -130,7 +135,12 @@
     <ClInclude Include="RestartButton.h">
       <Filter>UI\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.h" />
+    <ClInclude Include="Collider.h">
+      <Filter>Components\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Components\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">
@@ -150,6 +160,9 @@
     </Filter>
     <Filter Include="Components\Physics">
       <UniqueIdentifier>{c8f780db-1728-4cce-86c2-3f2688edd644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Collision">
+      <UniqueIdentifier>{e1188f9f-36f7-4633-9635-305b954315b2}</UniqueIdentifier>
     </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{63dd7a6a-36a4-477a-a4b3-e46dd1fbce88}</UniqueIdentifier>
