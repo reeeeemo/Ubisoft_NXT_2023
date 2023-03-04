@@ -34,9 +34,6 @@
     <ClCompile Include="MainScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Position.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="EntityRenderer.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -69,6 +66,12 @@
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>Components\Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.cpp">
+      <Filter>Components\Positions</Filter>
+    </ClCompile>
+    <ClCompile Include="GridPosition.cpp">
+      <Filter>Components\Positions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,9 +120,6 @@
     <ClInclude Include="Entity.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Position.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="EntityRenderer.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -156,6 +156,12 @@
     <ClInclude Include="TileTypes.h">
       <Filter>Components\Tilemap</Filter>
     </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Components\Positions</Filter>
+    </ClInclude>
+    <ClInclude Include="GridPosition.h">
+      <Filter>Components\Positions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">
@@ -190,6 +196,9 @@
     </Filter>
     <Filter Include="Components\Managers">
       <UniqueIdentifier>{d88be3e3-873b-4fc2-8f68-94c7d3cbb9ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Positions">
+      <UniqueIdentifier>{d6819cdf-5eae-405b-84fb-c5184609f930}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -24,9 +24,22 @@ CPoint CPoint::operator*(float scalar) const
 	return CPoint{ x * scalar, y * scalar, z * scalar, 1 };
 }
 
+CPoint CPoint::operator*(const CPoint& point) const
+{
+	return CPoint(x * point.x, y * point.y, z * point.z, 1);
+}
+
 CPoint CPoint::operator/(float scalar) const
 {
 	return CPoint{ x / scalar, y / scalar, z / scalar, 1 };
+}
+
+bool CPoint::operator!=(const CPoint& point) const
+{
+	if (point.x != x || point.y != y || point.z != z) {
+		return true;
+	}
+	return false;
 }
 
 void CPoint::operator+=(const CPoint& point)

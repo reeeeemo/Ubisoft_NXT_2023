@@ -11,7 +11,8 @@ struct CRigidbody
 	 * Functions
 	 */
 	CRigidbody();
-	CPoint AddForce(CPoint position, float deltaTime);
+	CPoint UpdateForce(CPoint position, float deltaTime);
+	void AddForce(CPoint forceApplied, float deltaTime);
 	void Update(float deltaTime);
 	/*
 	 * Variables

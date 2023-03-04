@@ -1,4 +1,7 @@
 #pragma once
+#ifndef __POINT_H__
+#define __POINT_H__
+
 
 struct CPoint
 {
@@ -9,8 +12,10 @@ struct CPoint
 	CPoint operator+(const CPoint&) const;
 	CPoint operator-(const CPoint&) const;
 	CPoint operator*(float scalar) const;
+	CPoint operator*(const CPoint&) const;
 	CPoint operator/(float scalar) const;
-	
+	bool operator !=(const CPoint&) const;
+
 	void operator+=(const CPoint&);
 	void operator-=(const CPoint&);
 	void operator*=(float scalar);
@@ -22,3 +27,5 @@ struct CPoint
 	};
 };
 
+
+#endif //!__POINT_H__

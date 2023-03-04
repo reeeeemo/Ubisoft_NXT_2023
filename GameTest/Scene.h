@@ -56,6 +56,7 @@ protected:
 	static ComponentManager<CEntityRenderer>& s_renderers; // Manager for all entity renderers
 	static ComponentManager<CRigidbody>& s_rigidbodies; // Manager for all entity rigidbodies (physics)
 	static ComponentManager<CCollider>& s_colliders; // Manager for all entity colliders
+	static ComponentManager<CGridPosition>& s_gridPositions; // Manager for all entities grid positions.
 	static const Entity player; // Player entity.
 
 };

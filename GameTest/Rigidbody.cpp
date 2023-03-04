@@ -6,20 +6,27 @@ CRigidbody::CRigidbody()
 {
 	velocity = CPoint(0.0f,0.0f,0.0f,1.0f);
 	//acceleration = 0.0;
-	acceleration = CPoint(0.5f, 0.5f, 0.0f, 1.0f);
-	mass = 1.0;
+	acceleration = CPoint(0.0f, 0.0f, 0.0f, 1.0f);
+	mass = 5.0;
 	drag = 1.0;
 }
 
 /* Adds a force onto the position and sends back a Point with the new position (Verlet Integration!) */
-CPoint CRigidbody::AddForce(CPoint position, float deltaTime)
+CPoint CRigidbody::UpdateForce(CPoint position, float deltaTime)
 {
-	CPoint new_position = CPoint{ 0,0,0,1.0f };
+	CPoint new_position = CPoint();
 
-	new_position.x = position.x + velocity.x * (deltaTime + 0.5f * acceleration.x * (deltaTime * deltaTime));
-	new_position.y = position.y + velocity.y * (deltaTime + 0.5f * acceleration.y * (deltaTime * deltaTime));
+	new_position.x = position.x + velocity.x * deltaTime;
+	new_position.y = position.y + velocity.y * deltaTime;
 
 	return new_position;
+}
+
+/* Adding the force with a direction vector. */
+void CRigidbody::AddForce(CPoint forceApplied, float deltaTime) {
+
+	acceleration = forceApplied / mass;
+	velocity += acceleration * deltaTime;
 }
 
 /* Slows down the velocity, so when we let go of a key we are not constanly moving */

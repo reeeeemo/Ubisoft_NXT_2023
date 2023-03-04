@@ -1,7 +1,9 @@
 #pragma once
 #ifndef __POSITION_H__
 #define __POSITION_H__
+
 #include "Point.h"
+#include "Math.h"
 
 struct CPosition
 {
@@ -11,10 +13,13 @@ struct CPosition
 	CPosition();
 	void SetPosition(float x, float y, float z);
 	void SetPosition(CPoint destination);
+	CPoint GetPosition();
 	 /*
 	  *  Variables
 	  */
-	CPoint position = CPoint(0,0,0,1);
+	union {
+		struct { int x, y, z;  };
+	};
 };
 
 #endif // !__POSITION_H__

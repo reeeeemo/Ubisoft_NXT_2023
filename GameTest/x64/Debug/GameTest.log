@@ -1,13 +1,25 @@
-﻿  Button.cpp
-  EndScene.cpp
-  GameTest.cpp
-  MainScene.cpp
-  MenuScene.cpp
-  Scene.cpp
-  TileManager.cpp
-E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(38,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(38,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(43,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(43,50): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+﻿  Collider.cpp
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(43,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(44,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(45,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(48,7): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(49,7): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(51,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(51,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(51,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(52,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(52,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(52,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(53,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(53,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(53,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(54,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(54,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(54,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(60,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(60,48): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(60,108): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(61,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(61,27): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Collider.cpp(61,100): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   GameTest.vcxproj -> E:\Ascending Flags\Ubisoft_NXT_2023\x64\Debug\GameTest.exe

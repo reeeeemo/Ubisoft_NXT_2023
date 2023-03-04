@@ -24,4 +24,13 @@ namespace Math {
 	{
 		return abs(value);
 	}
+
+	inline float GetLength(const CPoint& a) {
+		return a.x * a.x + a.y * a.y;
+	}
+
+	inline CPoint Normalize(const CPoint& a) {
+		return a * (1 / std::sqrt(GetLength(a)));
+	}
+
 }

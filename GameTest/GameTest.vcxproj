@@ -191,6 +191,7 @@
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityRenderer.h" />
+    <ClInclude Include="GridPosition.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MenuScene.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="EntityRenderer.cpp" />
     <ClCompile Include="GameTest.cpp" />
+    <ClCompile Include="GridPosition.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="Point.cpp" />

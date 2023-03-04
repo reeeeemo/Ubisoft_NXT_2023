@@ -19,6 +19,8 @@ ComponentManager<CPosition>& CScene::s_positions = ComponentManager<CPosition>()
 ComponentManager<CEntityRenderer>& CScene::s_renderers = ComponentManager<CEntityRenderer>(); // Manager for all entity renderers.
 ComponentManager<CRigidbody>& CScene::s_rigidbodies = ComponentManager<CRigidbody>(); // Manager for all entity rigidbodies (physics)
 ComponentManager<CCollider>& CScene::s_colliders = ComponentManager<CCollider>(); // Manager for all entity colliders
+ComponentManager<CGridPosition>& CScene::s_gridPositions = ComponentManager<CGridPosition>(); // Manager for all entity grid positions.
+
 const Entity CScene::player = CreateEntity();
 
 void CScene::Init()

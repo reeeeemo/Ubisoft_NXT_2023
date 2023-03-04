@@ -16,11 +16,14 @@ public:
 	bool IsColliding(CBoxCollider otherCollider);
 	bool IsColliding(float x, float y);
 	void DebugDrawCollider() const;
+	void UpdateColliderVerticies(CPoint position, float width, float height);
+	CPoint GetOverlappingSide(CBoxCollider otherCollider, float width, float height);
 
 	/*
 	 *  Variables
 	 */
 	bool colliding = false;
+	bool isTrigger = false; // Is it used for just triggering events / actions.
 	CBoxCollider collider;
 private:
 

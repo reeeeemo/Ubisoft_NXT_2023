@@ -11,6 +11,7 @@
 #include "Rigidbody.h"
 #include "Collider.h"
 #include "Tile.h"
+#include "GridPosition.h"
 
 // Create a component manager for each "component" (position, rotation, etc) of each entity in the program.
 template<typename Component>

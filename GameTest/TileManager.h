@@ -25,6 +25,8 @@ public:
 	static void BuildTileMap();
 	static void DrawTileMap();
 	static void DebugDrawTileMap();
+	static CPoint CheckForTileCollision(CBoxCollider col, float width, float height);
+
 
 	TileManager(const TileManager&) = delete; // No copying by mistake.
 private:

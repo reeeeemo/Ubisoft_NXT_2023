@@ -1,22 +1,23 @@
 #include "stdafx.h"
 #include "Collider.h"
 
-/* Using AABB Collision, seeing if both box colliders are colliding. */
+/* Using AABB Collision, seeing if both box colliders are colliding. Can check X or Y values specifically */
 bool CCollider::IsColliding(CBoxCollider otherCollider)
 {
 	/* If col1.x < col2.x + col2.w
-	 * If col1.x + col1.x > col1.x
+	 * If col1.x + col1.w > col2.x
 	 * If col1.y < col2.y + col2.h
 	 * If col1.y + col1.h > col2.y
 	 */ 
-	if (collider.p1.x < otherCollider.p2.x &&
-		collider.p2.x > otherCollider.p1.x &&
-		collider.p1.y < otherCollider.p3.y && 
-		collider.p3.y > otherCollider.p1.y)
+	if (collider.p2.x < otherCollider.p2.x &&
+		collider.p4.x > otherCollider.p1.x &&
+		collider.p1.y < otherCollider.p3.y &&
+		collider.p3.y > otherCollider.p4.y)
 	{
 		colliding = true;
 		return true;
 	}
+	
 	colliding = false;
 	return false;
 }
@@ -52,6 +53,40 @@ void CCollider::DebugDrawCollider() const
 	App::DrawLine(collider.p3.x, collider.p3.y, collider.p4.x, collider.p4.y, r, g, b);
 	App::DrawLine(collider.p4.x, collider.p4.y, collider.p1.x, collider.p1.y, r, g, b);
 
+}
+
+void CCollider::UpdateColliderVerticies(CPoint position, float width, float height)
+{
+	SetColliderVerticies(position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
+		position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
+}
+
+/* Grabs the point of the side that is currently colliding with the edge. */
+CPoint CCollider::GetOverlappingSide(CBoxCollider otherCollider, float width, float height)
+{
+	if (colliding) {
+		// Check Top side to see if overlap
+		if (collider.p2.y > otherCollider.p1.y &&
+			collider.p2.y < otherCollider.p2.y) {
+			return CPoint(collider.p2.x + width / 2.0f, collider.p2.y, 0.0, 1.0f);
+		}
+		// Check Bottom side to see if overlap
+		if (collider.p1.y < otherCollider.p2.y &&
+			collider.p1.y > otherCollider.p1.y) {
+			return CPoint(collider.p1.x + width / 2.0f, collider.p1.y, 0.0, 1.0f);
+		}
+		// Check Right side to see if overlap
+		if (collider.p3.x > otherCollider.p2.x &&
+			collider.p3.x < otherCollider.p3.x) {
+			return CPoint(collider.p3.x, collider.p3.y - height / 2.0f, 0.0, 1.0f);
+		}
+		// Check Left side to see if overlap
+		if (collider.p2.x < otherCollider.p3.x &&
+			collider.p2.x > otherCollider.p2.x) {
+			return CPoint(collider.p2.x, collider.p2.y - height / 2.0f, 0.0, 1.0f);
+		}
+	}
+	return CPoint();
 }
 
 void CCollider::SetColliderVerticies(CPoint p1, CPoint p2, CPoint p3, CPoint p4)

@@ -14,8 +14,15 @@ public:
 	void Render() override;
 	void HandleEvents(float deltaTime) override;
 private:
+	/*
+	*  Functions
+	*/
 	void OnEnter() override;
 	void OnExit() override;
+	/*
+	*  Variables
+	*/
+	CPoint plrSpeed = CPoint();
 };
 
 #endif // !__MAINSCENE_H__
