@@ -56,6 +56,13 @@ void CPoint::operator -=(const CPoint& point)
 	z -= point.z;
 }
 
+void CPoint::operator-=(float scalar)
+{
+	x -= scalar;
+	y -= scalar;
+	z = 0; // Let's not change this since we are only in 2D still.
+}
+
 void CPoint::operator*=(const float scalar)
 {
 	x *= scalar;

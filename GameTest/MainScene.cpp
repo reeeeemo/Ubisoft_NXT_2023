@@ -37,8 +37,7 @@ void CMainScene::Update(float deltaTime)
 			// Get direction from colliding side to the position of our character, and then add a impulse force.
 			if (collidingSide != CPoint(0.0,0.0,0.0,1.0f)) {
 				CPoint directionAwayFromWall = new_pos - collidingSide;
-				s_rigidbodies.GetComponent(entity)->AddForce(directionAwayFromWall / 100.0f, deltaTime);
-				//s_rigidbodies.GetComponent(entity)->AddForce(Math::Normalize(current_pos - collidingSide) * CPoint(-plrSpeed.x, -plrSpeed.y, 0.0f, 1.0f) * 2.0f, deltaTime);
+				s_rigidbodies.GetComponent(entity)->AddForce((directionAwayFromWall / 90.0f), deltaTime);
 			}
 
 			new_pos = s_rigidbodies.GetComponent(entity)->UpdateForce(current_pos, deltaTime);
@@ -75,8 +74,15 @@ void CMainScene::HandleEvents(float deltaTime)
 		CScene::ChangeScenes(MAIN_MENU);
 	}
 	
+	// Don't run anything past here if we don't got a rigidbody or renderer.
 	if (!(s_renderers.Contains(player) && s_rigidbodies.Contains(player))) {
 		return;
+	}
+
+	if (App::IsKeyPressed(MK_RBUTTON)) { // If player pressed the "right mouse button"
+		CPoint mouse_pos = CPoint();
+		App::GetMousePos(mouse_pos.x, mouse_pos.y);
+		CBomb::PlaceBomb(s_positions.GetComponent(player)->GetPosition(), mouse_pos, EBombs::CLASSIC, deltaTime);
 	}
 
 	if (App::IsKeyPressed('W')) // If player presses the "up" key
@@ -88,7 +94,15 @@ void CMainScene::HandleEvents(float deltaTime)
 		plrSpeed.y -= 0.01f;
 	}
 	else {
-		plrSpeed.y = 0.0f;
+		if (plrSpeed.y >= 0.05f) {
+			plrSpeed.y -= 0.05f;
+		}
+		else if (plrSpeed.y <= -0.05f) {
+			plrSpeed.y += 0.05f;
+		}
+		else {
+			plrSpeed.y = 0.0f;
+		}
 	}
 
 	if (App::IsKeyPressed('A')) // If player presses the "left" key
@@ -100,7 +114,15 @@ void CMainScene::HandleEvents(float deltaTime)
 		plrSpeed.x += 0.01f;
 	}
 	else {
-		plrSpeed.x = 0.0f;
+		if (plrSpeed.x >= 0.05f) {
+			plrSpeed.x -= 0.05f;
+		}
+		else if (plrSpeed.x <= -0.05f) {
+			plrSpeed.x += 0.05f;
+		}
+		else {
+			plrSpeed.x = 0.0f;
+		}
 	}
 
 }
@@ -153,8 +175,13 @@ void CMainScene::OnExit() {
 		s_renderers.GetComponent(entity)->OnDestroy();
 		s_renderers.Erase(entity);
 		s_positions.Erase(entity);
+		s_rigidbodies.Erase(entity);
+		s_colliders.Erase(entity);
+		s_gridPositions.Erase(entity);
 
 		s_entities.erase(s_entities.begin() + vectorIterator);
 		vectorIterator++;
 	}
+
+	TileManager::OnExit();
 }

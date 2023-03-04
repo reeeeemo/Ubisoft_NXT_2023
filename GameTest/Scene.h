@@ -9,6 +9,7 @@
 #include "ComponentManager.h"
 #include "Button.h"
 #include "TileManager.h"
+#include "Bomb.h"
 
 enum EScenes
 {

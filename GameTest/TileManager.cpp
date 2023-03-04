@@ -87,3 +87,13 @@ CPoint TileManager::CheckForTileCollision(CBoxCollider col, float width, float h
 	}
 	return CPoint();
 }
+
+void TileManager::OnExit()
+{
+	for (auto entity : tile_entities) {
+		s_tilePositions.Erase(entity);
+		s_tiles.Erase(entity);
+		s_tileColliders.Erase(entity);
+		s_tileRenderers.Erase(entity);
+	}
+}

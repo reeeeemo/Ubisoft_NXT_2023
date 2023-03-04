@@ -18,6 +18,7 @@ struct CPoint
 
 	void operator+=(const CPoint&);
 	void operator-=(const CPoint&);
+	void operator -=(float scalar);
 	void operator*=(float scalar);
 	void operator/=(float scalar);
 

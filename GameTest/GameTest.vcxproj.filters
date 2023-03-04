@@ -73,6 +73,12 @@
     <ClCompile Include="GridPosition.cpp">
       <Filter>Components\Positions</Filter>
     </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassicBomb.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -162,6 +168,12 @@
     <ClInclude Include="GridPosition.h">
       <Filter>Components\Positions</Filter>
     </ClInclude>
+    <ClInclude Include="Bomb.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassicBomb.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">
@@ -199,6 +211,9 @@
     </Filter>
     <Filter Include="Components\Positions">
       <UniqueIdentifier>{d6819cdf-5eae-405b-84fb-c5184609f930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Bombs">
+      <UniqueIdentifier>{2c04c5d4-a2c5-48a9-b833-a05b1edc4029}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

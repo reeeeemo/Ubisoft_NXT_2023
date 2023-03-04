@@ -34,10 +34,10 @@ void CRigidbody::Update(float deltaTime)
 {
 	if (velocity.x != 0.0f)
 	{
-		velocity.x /= 0.9f * deltaTime;
+		velocity.x /= 0.5f * deltaTime;
 	}
 	if (velocity.y != 0.0f)
 	{
-		velocity.y /= 0.9f * deltaTime;
+		velocity.y /= 0.5f * deltaTime;
 	}
 }

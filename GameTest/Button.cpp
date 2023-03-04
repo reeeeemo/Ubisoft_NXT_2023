@@ -59,7 +59,7 @@ void CButton::Update(float deltaTime)
 		if (s_buttons[i]->isEnabled == true)
 		{
 			CheckForMouseInput(s_buttons[i]);
-			s_buttonRenderers.GetComponent(s_buttons[i]->id)->Update(deltaTime, s_buttonPositions.GetComponent(s_buttons[i]->id)->position);
+			s_buttonRenderers.GetComponent(s_buttons[i]->id)->Update(deltaTime, s_buttonPositions.GetComponent(s_buttons[i]->id)->GetPosition());
 			s_buttonColliders.GetComponent(s_buttons[i]->id)->IsColliding(mouseX, mouseY);
 		}
 	}
@@ -85,6 +85,10 @@ void CButton::Exit()
 {
 	for (int i = 0; i < s_buttons.size() - 1; i++)
 	{
+		s_buttonColliders.Erase(s_buttons[i]->id);
+		s_buttonPositions.Erase(s_buttons[i]->id);
+		s_buttonRenderers.Erase(s_buttons[i]->id);
+
 		delete s_buttons[i];
 		s_buttons[i] = nullptr;
 	}

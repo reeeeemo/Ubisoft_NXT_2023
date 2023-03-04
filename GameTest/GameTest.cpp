@@ -11,6 +11,7 @@
 #include "app/app.h"
 #include "Scene.h"
 #include "Button.h"
+#include "Bomb.h"
 //------------------------------------------------------------------------
 // Example data....
 //------------------------------------------------------------------------
@@ -29,6 +30,7 @@
 //------------------------------------------------------------------------
 void Init()
 {
+	CBomb::Init();
 	CButton::Init();
 	CScene::Init();
 }
@@ -41,6 +43,7 @@ void Update(float deltaTime)
 {
 	CButton::Update(deltaTime);
 	CScene::UpdateCurrentScene(deltaTime);
+	CBomb::UpdateActiveBombs(deltaTime);
 }
 
 //------------------------------------------------------------------------
@@ -51,6 +54,8 @@ void Render()
 {
 	CButton::Render();
 	CScene::RenderCurrentScene();
+	CBomb::RenderActiveBombs();
+
 }
 //------------------------------------------------------------------------
 // Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
@@ -58,6 +63,7 @@ void Render()
 //------------------------------------------------------------------------
 void Shutdown()
 {
+	CBomb::Exit();
 	CButton::Exit();
 	CScene::Exit();
 }
