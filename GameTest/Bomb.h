@@ -7,6 +7,7 @@
 
 enum EBombs {
 	CLASSIC,
+	XBOMB,
 	NUM_BOMBS
 };
 

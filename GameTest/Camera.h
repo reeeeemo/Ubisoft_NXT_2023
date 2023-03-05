@@ -11,6 +11,7 @@ public:
 	static void Update();
 	static CPoint GetPosition();
 	static void SetPosition(CPoint pos);
+	static CPoint DisplaceObject(CPoint objectToDisplace);
 
 
 private:

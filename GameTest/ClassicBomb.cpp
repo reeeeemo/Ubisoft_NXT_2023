@@ -68,7 +68,7 @@ void CClassicBomb::Execute()
 
 }
 
-/* Renders bomb's explosion sprites. */
+/* Renders bomb's explosion via the colliders. */
 void CClassicBomb::RenderExplosion() {
 	if (hasExploded) {
 		s_bombColliders.GetComponent(verticalRect)->DebugDrawCollider();

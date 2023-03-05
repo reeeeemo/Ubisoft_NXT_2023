@@ -8,7 +8,7 @@ CEntityRenderer::CEntityRenderer()
 }
 
 /* Renders sprite previously created. */
-void CEntityRenderer::Render(CPoint sprite_position) const
+void CEntityRenderer::Render() const
 {
 	entitySprite->Draw();
 }
@@ -44,11 +44,23 @@ void CEntityRenderer::ChangeScale(float scaleValue)
 	spriteHeight = entitySprite->GetHeight() * scaleValue;
 }
 
+void CEntityRenderer::ChangeAngle(float degree)
+{
+	entitySprite->SetAngle(degree);
+	spriteWidth = entitySprite->GetWidth();
+	spriteHeight = entitySprite->GetHeight();
+}
+
 /* Updates sprite and position of sprite. */
-void CEntityRenderer::Update(float deltaTime, CPoint sprite_position) const
+void CEntityRenderer::Update(float deltaTime, CPoint sprite_position, bool shouldDisplace) const
 {
 	entitySprite->Update(deltaTime);
-	entitySprite->SetPosition(sprite_position.x, sprite_position.y);
+	if (shouldDisplace) {
+		entitySprite->SetPosition(CCamera::DisplaceObject(sprite_position).x - (entitySprite->GetWidth() / 2.0), CCamera::DisplaceObject(sprite_position).y - (entitySprite->GetHeight() / 2.0));
+	}
+	else {
+		entitySprite->SetPosition(sprite_position.x, sprite_position.y);
+	}
 }
 
 /* When sprite is being destroyed*/

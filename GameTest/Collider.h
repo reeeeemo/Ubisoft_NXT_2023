@@ -17,6 +17,7 @@ public:
 	bool IsColliding(float x, float y);
 	void DebugDrawCollider() const;
 	void UpdateColliderVerticies(CPoint position, float width, float height);
+	void UpdateColliderVerticiesWithoutDisplacement(CPoint position, float width, float height);
 	void UpdateColliderVerticiesWithRadius(CPoint position, float width, float height, float radius, bool isVertical);
 	CPoint GetOverlappingSide(CBoxCollider otherCollider, float width, float height);
 

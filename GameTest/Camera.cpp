@@ -14,13 +14,14 @@ void CCamera::Init()
 
 void CCamera::Update()
 {
-	//position.x -= APP_INIT_WINDOW_WIDTH / 2;
-	/*if (position.x < -TILE_SIZE / 2) {
+	//position -= TILE_OFFSET;
+	position.y = -TILE_SIZE / 2.0f;
+	if (position.x < -TILE_SIZE / 2) {
 		position.x = -TILE_SIZE / 2;
 	}
-	else if (position.x > LEVEL_WIDTH - APP_INIT_WINDOW_WIDTH - TILE_SIZE / 2) {
-		position.x = LEVEL_WIDTH - APP_INIT_WINDOW_WIDTH - TILE_SIZE / 2;
-	}*/
+	else if (position.x > LEVEL_WIDTH - APP_INIT_WINDOW_WIDTH + TILE_SIZE * 7.5f) {
+		position.x = LEVEL_WIDTH - APP_INIT_WINDOW_WIDTH + TILE_SIZE * 7.5f;
+	}
 
 }
 
@@ -32,4 +33,9 @@ CPoint CCamera::GetPosition()
 void CCamera::SetPosition(CPoint pos)
 {
 	position = pos;
+}
+
+CPoint CCamera::DisplaceObject(CPoint objectToDisplace)
+{
+	return objectToDisplace - position;
 }

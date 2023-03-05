@@ -23,6 +23,7 @@ private:
 	*  Variables
 	*/
 	CPoint plrSpeed = CPoint();
+	EBombs current_bomb = EBombs::CLASSIC;
 };
 
 #endif // !__MAINSCENE_H__

@@ -2,7 +2,7 @@
 #include "Bomb.h"
 #include "ClassicBomb.h"
 #include "TileManager.h"
-
+#include "XBomb.h"
 
 std::array<CBomb*, NUM_BOMBS> CBomb::s_bombs;
 ComponentManager<CPosition>& CBomb::s_bombPositions = ComponentManager<CPosition>();
@@ -16,6 +16,7 @@ void CBomb::Init()
 {
 	// Initializing everything
 	s_bombs[CLASSIC] = new CClassicBomb;
+	s_bombs[XBOMB] = new CXBomb;
 	for (int i = 0; i < NUM_BOMBS; i++) {
 		s_bombs[i]->id = CreateEntity();
 		s_bombPositions.Create(s_bombs[i]->id);
@@ -26,11 +27,18 @@ void CBomb::Init()
 		s_bombs[i]->OnEnter();
 	}
 
-	// Adding textures to bombs.
+	// Adding stats to classic bomb.
 	s_bombRenderers.GetComponent(s_bombs[CLASSIC]->id)->CreateEntitySprite(".\\Assets\\classicBomb.bmp", 1, 1);
 	s_bombRenderers.GetComponent(s_bombs[CLASSIC]->id)->ChangeScale(0.8f);
 	s_bombColliders.GetComponent(s_bombs[CLASSIC]->id)->UpdateColliderVerticies(s_bombPositions.GetComponent(s_bombs[CLASSIC]->id)->GetPosition(),
 		s_bombRenderers.GetComponent(s_bombs[CLASSIC]->id)->spriteWidth, s_bombRenderers.GetComponent(s_bombs[CLASSIC]->id)->spriteHeight);
+
+	// Adding stats to X bomb
+	s_bombRenderers.GetComponent(s_bombs[XBOMB]->id)->CreateEntitySprite(".\\Assets\\xBomb.bmp", 1, 1);
+	s_bombRenderers.GetComponent(s_bombs[XBOMB]->id)->ChangeScale(0.8f);
+	s_bombColliders.GetComponent(s_bombs[XBOMB]->id)->UpdateColliderVerticies(s_bombPositions.GetComponent(s_bombs[XBOMB]->id)->GetPosition(),
+		s_bombRenderers.GetComponent(s_bombs[XBOMB]->id)->spriteWidth, s_bombRenderers.GetComponent(s_bombs[XBOMB]->id)->spriteHeight);
+
 }
 
 /* When player requests to place a bomb */
@@ -52,7 +60,7 @@ void CBomb::UpdateActiveBombs(float deltaTime)
 		if (s_bombs[i]->isEnabled) {
 			s_bombs[i]->Update();
 
-			s_bombRenderers.GetComponent(s_bombs[i]->id)->Update(deltaTime, s_bombPositions.GetComponent(s_bombs[i]->id)->GetPosition());
+			s_bombRenderers.GetComponent(s_bombs[i]->id)->Update(deltaTime, s_bombPositions.GetComponent(s_bombs[i]->id)->GetPosition(), true);
 			s_bombRigidbodies.GetComponent(s_bombs[i]->id)->Update(deltaTime);
 			CPoint new_pos = s_bombRigidbodies.GetComponent(s_bombs[i]->id)->UpdateForce(s_bombPositions.GetComponent(s_bombs[i]->id)->GetPosition(), deltaTime);
 			s_bombPositions.GetComponent(s_bombs[i]->id)->SetPosition(new_pos);
@@ -84,7 +92,7 @@ void CBomb::RenderActiveBombs()
 {
 	for (int i = 0; i < NUM_BOMBS; i++) {
 		if (s_bombs[i]->isEnabled) {
-			s_bombRenderers.GetComponent(s_bombs[i]->id)->Render(s_bombPositions.GetComponent(s_bombs[i]->id)->GetPosition());
+			s_bombRenderers.GetComponent(s_bombs[i]->id)->Render();
 			s_bombs[i]->RenderExplosion();
 		}
 	}

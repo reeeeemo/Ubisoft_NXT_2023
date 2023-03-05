@@ -37,4 +37,12 @@ namespace Math {
 		return (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y);
 	}
 
+	inline float Cos(float degree) {
+		return std::cos(Math::ToRadians(degree));
+	}
+
+	inline float Sin(float degree) {
+		return std::sin(Math::ToRadians(degree));
+	}
+
 }

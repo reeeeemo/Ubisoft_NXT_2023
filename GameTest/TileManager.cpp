@@ -29,7 +29,7 @@ void TileManager::BuildTileMap()
 			auto& tile = s_tiles.Create(tileEntity);
 			
 			// Sets tiles based on their position or a random variable.
-			if (row == 0 || col == 0 || row == ROW_NUM - 1) {
+			if (row == 0 || col == 0 || row == ROW_NUM - 1 || col == COL_NUM - 1) {
 				tile.tile_type = ETileType::IMPASSABLE;
 				tileRend.CreateEntitySprite(".\\Assets\\stone.bmp", 1, 1);
 				tileCol.isTrigger = false;
@@ -49,11 +49,10 @@ void TileManager::BuildTileMap()
 			}
 
 			// Sets position of sprite and player, and collider verticies of tile.
-			const CPoint tile_pos = CPoint(col * TILE_SIZE - CCamera::GetPosition().x,
-				row * TILE_SIZE - CCamera::GetPosition().y, 0.0f, 1.0f);
+			const CPoint tile_pos = CPoint(col * TILE_SIZE, row * TILE_SIZE, 0.0f, 1.0f);
 			tile.SetGridPosition(col, row);
 			tilePos.SetPosition(tile_pos);
-			tileCol.UpdateColliderVerticies(tile_pos + TILE_OFFSET, tileRend.spriteWidth, tileRend.spriteHeight);
+			//tileCol.UpdateColliderVerticiesWithoutDisplacement(tile_pos + TILE_OFFSET, tileRend.spriteWidth, tileRend.spriteHeight);
 			//tileCol.SetColliderVerticies(tile_pos, CPoint(tile_pos.x + TILE_SIZE, tile_pos.y, 0.0f, 1.0f),
 			//	CPoint(tile_pos.x + TILE_SIZE, tile_pos.y + TILE_SIZE, 0.0, 1.0f), CPoint(tile_pos.x, tile_pos.y + TILE_SIZE, 0.0f, 1.0f));
 			tileRend.entitySprite->SetPosition(tile_pos.x + TILE_SIZE / 2.0, tile_pos.y + TILE_SIZE / 2.0);
@@ -65,7 +64,7 @@ CPoint TileManager::FindSafePosition()
 {
 	for (auto entity : tile_entities) {
 		if (s_tiles.GetComponent(entity)->tile_type == ETileType::OPEN) {
-			return s_tilePositions.GetComponent(entity)->GetPosition();
+			return s_tilePositions.GetComponent(entity)->GetPosition() + TILE_OFFSET;
 		}
 	}
 }
@@ -76,8 +75,7 @@ void TileManager::DrawTileMap()
 	for (auto entity : tile_entities) {
 		if (s_tileRenderers.Contains(entity)) {
 			CPoint tile_position = s_tilePositions.GetComponent(entity)->GetPosition();
-			s_tileRenderers.GetComponent(entity)->Render(CPoint(tile_position.x - CCamera::GetPosition().x,
-				tile_position.y - CCamera::GetPosition().y, 0.0, 1.0f));
+			s_tileRenderers.GetComponent(entity)->Render();
 		}
 	}
 }
@@ -88,10 +86,27 @@ void TileManager::DebugDrawTileMap()
 	for (auto entity : tile_entities) {
 		if (s_tiles.Contains(entity)) {
 			CTile* tile = s_tiles.GetComponent(entity); // Grab tile from entity vector.
-			if (tile->tile_type == ETileType::IMPASSABLE) {
+			if (tile->tile_type == ETileType::IMPASSABLE || tile->tile_type == ETileType::BREAKABLE) {
 				s_tileColliders.GetComponent(entity)->colliding = true;
 			}
 			s_tileColliders.GetComponent(entity)->DebugDrawCollider();
+		}
+	}
+}
+
+/* Updates tile map and it's colliders / sprites. */
+void TileManager::UpdateTileMap(float deltaTime)
+{
+	for (auto entity : tile_entities) {
+		if (s_tiles.Contains(entity)) {
+			s_tileRenderers.GetComponent(entity)->Update(deltaTime, CCamera::DisplaceObject(s_tilePositions.GetComponent(entity)->GetPosition()), true);
+
+			// Sets tile collider relative to how large the map and sprites are, and where the camera position is :)
+			s_tileColliders.GetComponent(entity)->UpdateColliderVerticies(CCamera::DisplaceObject(
+				CPoint(s_tilePositions.GetComponent(entity)->x + s_tileRenderers.GetComponent(entity)->spriteWidth / 2, 
+					s_tilePositions.GetComponent(entity)->y + s_tileRenderers.GetComponent(entity)->spriteHeight / 2, 0.0, 1.0f)) - TILE_OFFSET, 
+				s_tileRenderers.GetComponent(entity)->spriteWidth, s_tileRenderers.GetComponent(entity)->spriteHeight);
+
 		}
 	}
 }

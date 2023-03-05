@@ -64,6 +64,14 @@ void CCollider::DebugDrawCollider() const
 
 void CCollider::UpdateColliderVerticies(CPoint position, float width, float height)
 {
+	CPoint displaced_position = CPoint(CCamera::DisplaceObject(position).x - TILE_SIZE / 2,
+		CCamera::DisplaceObject(position).y - TILE_SIZE / 2, 0.0, 1.0f);
+	SetColliderVerticies(displaced_position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), displaced_position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
+		displaced_position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), displaced_position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
+}
+
+void CCollider::UpdateColliderVerticiesWithoutDisplacement(CPoint position, float width, float height)
+{
 	SetColliderVerticies(position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
 		position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
 }
