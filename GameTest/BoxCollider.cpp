@@ -9,3 +9,8 @@ CBoxCollider::CBoxCollider(CPoint point1, CPoint point2, CPoint point3, CPoint p
 CBoxCollider::CBoxCollider() : p1(CPoint()), p2(CPoint()), p3(CPoint()), p4(CPoint())
 {}
 
+std::array<CPoint, 4> CBoxCollider::GetPoints()
+{
+	return {p1, p2, p3, p4};
+}
+

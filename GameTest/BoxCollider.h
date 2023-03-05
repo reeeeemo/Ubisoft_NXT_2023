@@ -10,6 +10,8 @@ struct CBoxCollider
 	CBoxCollider(CPoint point1, CPoint point2, CPoint point3, CPoint point4);
 	CBoxCollider(); // Default constructor
 
+	std::array<CPoint, 4> GetPoints();
+
 	// Basically a 2x2 matrix that acts as the collider
 	union
 	{

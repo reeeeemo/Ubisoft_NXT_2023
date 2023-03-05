@@ -22,8 +22,8 @@ void CClassicBomb::OnEnter()
 
 	s_bombRenderers.GetComponent(verticalRect)->CreateEntitySprite(".\\Assets\\explosion.bmp", 1, 1);
 	s_bombRenderers.GetComponent(horizontalRect)->CreateEntitySprite(".\\Assets\\explosion.bmp", 1, 1);
-	s_bombRenderers.GetComponent(verticalRect)->ChangeScale(0.5f);
-	s_bombRenderers.GetComponent(horizontalRect)->ChangeScale(0.5f);
+	s_bombRenderers.GetComponent(verticalRect)->ChangeScale(0.7f);
+	s_bombRenderers.GetComponent(horizontalRect)->ChangeScale(0.7f);
 
 
 	// Initial vertical collider
@@ -52,15 +52,20 @@ void CClassicBomb::OnExit()
 void CClassicBomb::Execute()
 {
 	// Look at collisions with the vertical tiles.
-	s_bombColliders.GetComponent(id)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(id)->GetPosition(),
-		s_bombRenderers.GetComponent(id)->spriteWidth, s_bombRenderers.GetComponent(id)->spriteHeight, radius, true);
-		TileManager::BreakTileColliding(s_bombColliders.GetComponent(id)->collider);
+	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(verticalRect)->GetPosition() + TILE_OFFSET,
+		s_bombRenderers.GetComponent(verticalRect)->spriteWidth, s_bombRenderers.GetComponent(verticalRect)->spriteHeight, radius, true);
+		TileManager::BreakTileColliding(s_bombColliders.GetComponent(verticalRect)->collider);
 	
+	// Look at collision with the middle tile.
+		s_bombColliders.GetComponent(id)->UpdateColliderVerticies(s_bombPositions.GetComponent(id)->GetPosition() + TILE_OFFSET,
+			s_bombRenderers.GetComponent(id)->spriteWidth, s_bombRenderers.GetComponent(id)->spriteHeight);
+		TileManager::BreakTileColliding(s_bombColliders.GetComponent(id)->collider);
 
 	// Look at collision with the horizontal tiles.
-	s_bombColliders.GetComponent(id)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(id)->GetPosition(),
-		s_bombRenderers.GetComponent(id)->spriteWidth, s_bombRenderers.GetComponent(id)->spriteHeight, radius, false);
-	TileManager::BreakTileColliding(s_bombColliders.GetComponent(id)->collider);
+	s_bombColliders.GetComponent(horizontalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(horizontalRect)->GetPosition() + TILE_OFFSET,
+		s_bombRenderers.GetComponent(horizontalRect)->spriteWidth, s_bombRenderers.GetComponent(horizontalRect)->spriteHeight, radius, false);
+	TileManager::BreakTileColliding(s_bombColliders.GetComponent(horizontalRect)->collider);
+
 }
 
 /* Renders bomb's explosion sprites. */
@@ -68,9 +73,7 @@ void CClassicBomb::RenderExplosion() {
 	if (hasExploded) {
 		s_bombColliders.GetComponent(verticalRect)->DebugDrawCollider();
 		s_bombColliders.GetComponent(horizontalRect)->DebugDrawCollider();
-	}
-
-		
+	}	
 }
 
 /* Updates bomb's positions and the other components. */

@@ -2,19 +2,22 @@
 #include "Collider.h"
 #include "Camera.h"
 #include "TileManager.h"
+#include <limits>
+#include <algorithm>
 
-/* Using AABB Collision, seeing if both box colliders are colliding. Can check X or Y values specifically */
+
+/* Using AABB Collision, seeing if one rectangle in another. */
 bool CCollider::IsColliding(CBoxCollider otherCollider)
 {
-	/* If col1.x < col2.x + col2.w
-	 * If col1.x + col1.w > col2.x
-	 * If col1.y < col2.y + col2.h
-	 * If col1.y + col1.h > col2.y
+	/* If col1.x <= col2.x + col2.w
+	 * If col1.x + col1.w >= col2.x
+	 * If col1.y <= col2.y + col2.h
+	 * If col1.y + col1.h >= col2.y
 	 */ 
-	if (collider.p2.x < otherCollider.p2.x &&
-		collider.p4.x > otherCollider.p1.x &&
-		collider.p1.y < otherCollider.p3.y &&
-		collider.p3.y > otherCollider.p4.y)
+	if (collider.p2.x <= otherCollider.p2.x &&
+		collider.p4.x >= otherCollider.p1.x &&
+		collider.p1.y <= otherCollider.p3.y &&
+		collider.p3.y >= otherCollider.p4.y)
 	{
 		colliding = true;
 		return true;
@@ -23,6 +26,8 @@ bool CCollider::IsColliding(CBoxCollider otherCollider)
 	colliding = false;
 	return false;
 }
+
+
 
 /* Looking for the x and y coordinate inbetween the box collider. */
 bool CCollider::IsColliding(float x, float y)
