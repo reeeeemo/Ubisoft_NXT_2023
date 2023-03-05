@@ -187,6 +187,7 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="ClassicBomb.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="ComponentManager.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ClassicBomb.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="EndScene.cpp" />

@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Collider.h"
+#include "Camera.h"
+#include "TileManager.h"
 
 /* Using AABB Collision, seeing if both box colliders are colliding. Can check X or Y values specifically */
 bool CCollider::IsColliding(CBoxCollider otherCollider)
@@ -59,6 +61,19 @@ void CCollider::UpdateColliderVerticies(CPoint position, float width, float heig
 {
 	SetColliderVerticies(position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
 		position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
+}
+
+void CCollider::UpdateColliderVerticiesWithRadius(CPoint position, float width, float height, float radius, bool isVertical)
+{
+	if (isVertical) { // If we are making this rectangle on vertical axis.
+		height *= radius;
+	}
+	else { // If we are making this rectangle on horizontal axis.
+		width *= radius;
+	}
+	SetColliderVerticies(position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
+		position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
+	
 }
 
 /* Grabs the point of the side that is currently colliding with the edge. */

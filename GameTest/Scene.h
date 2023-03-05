@@ -10,6 +10,7 @@
 #include "Button.h"
 #include "TileManager.h"
 #include "Bomb.h"
+#include "Camera.h"
 
 enum EScenes
 {
@@ -59,6 +60,7 @@ protected:
 	static ComponentManager<CCollider>& s_colliders; // Manager for all entity colliders
 	static ComponentManager<CGridPosition>& s_gridPositions; // Manager for all entities grid positions.
 	static const Entity player; // Player entity.
+	static const Entity playerCamera; // Player camera entity
 
 };
 

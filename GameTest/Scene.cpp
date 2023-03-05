@@ -22,6 +22,7 @@ ComponentManager<CCollider>& CScene::s_colliders = ComponentManager<CCollider>()
 ComponentManager<CGridPosition>& CScene::s_gridPositions = ComponentManager<CGridPosition>(); // Manager for all entity grid positions.
 
 const Entity CScene::player = CreateEntity();
+const Entity CScene::playerCamera = CreateEntity();
 
 void CScene::Init()
 {

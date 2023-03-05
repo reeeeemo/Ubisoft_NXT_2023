@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "EntityRenderer.h"
-
+#include "Camera.h"
+#include "TileManager.h"
 
 CEntityRenderer::CEntityRenderer()
 {
 }
 
 /* Renders sprite previously created. */
-void CEntityRenderer::Render() const
+void CEntityRenderer::Render(CPoint sprite_position) const
 {
 	entitySprite->Draw();
 }
@@ -24,6 +25,23 @@ void CEntityRenderer::CreateEntitySprite(const char* file_name, int col, int row
 		spriteHeight = entitySprite->GetHeight();
 	}
 
+}
+
+void CEntityRenderer::ChangeEntitySprite(const char* file_name, int col, int row, CPoint last_pos)
+{
+	// Deleting and re-allocating space.
+	delete entitySprite;
+	entitySprite = nullptr;
+
+	CreateEntitySprite(file_name, col, row);
+	entitySprite->SetPosition(last_pos.x, last_pos.y);
+}
+
+void CEntityRenderer::ChangeScale(float scaleValue)
+{
+	entitySprite->SetScale(scaleValue);
+	spriteWidth = entitySprite->GetWidth() * scaleValue;
+	spriteHeight = entitySprite->GetHeight() * scaleValue;
 }
 
 /* Updates sprite and position of sprite. */

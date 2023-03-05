@@ -11,8 +11,10 @@ struct CEntityRenderer
 	 *  Functions
 	*/
 	CEntityRenderer();
-	void Render() const;
+	void Render(CPoint sprite_position) const;
 	void CreateEntitySprite(const char* file_name, int col, int row);
+	void ChangeEntitySprite(const char* file_name, int col, int row, CPoint last_pos);
+	void ChangeScale(float scaleValue);
 	void Update(float deltaTime, CPoint sprite_position) const;
 	void OnDestroy() const;
 	/*

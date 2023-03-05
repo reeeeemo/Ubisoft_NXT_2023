@@ -34,9 +34,6 @@
     <ClCompile Include="MainScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="EntityRenderer.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Math\Components</Filter>
     </ClCompile>
@@ -79,6 +76,10 @@
     <ClCompile Include="ClassicBomb.cpp">
       <Filter>Components\Bombs</Filter>
     </ClCompile>
+    <ClCompile Include="EntityRenderer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\app.h">
@@ -174,6 +175,7 @@
     <ClInclude Include="ClassicBomb.h">
       <Filter>Components\Bombs</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Ubisoft API">

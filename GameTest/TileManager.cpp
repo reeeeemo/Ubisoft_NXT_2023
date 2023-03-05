@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TileManager.h"
+#include "Camera.h"
 
 /* Static variable initialization. */
 ComponentManager<CPosition>& TileManager::s_tilePositions = ComponentManager<CPosition>();
@@ -7,6 +8,9 @@ ComponentManager<CTile>& TileManager::s_tiles = ComponentManager<CTile>();
 ComponentManager<CCollider>& TileManager::s_tileColliders = ComponentManager<CCollider>();
 ComponentManager<CEntityRenderer>& TileManager::s_tileRenderers = ComponentManager<CEntityRenderer>();
 std::vector<Entity> TileManager::tile_entities;
+
+
+
 
 TileManager::TileManager() 
 {};
@@ -24,20 +28,29 @@ void TileManager::BuildTileMap()
 			auto& tileRend = s_tileRenderers.Create(tileEntity);
 			auto& tile = s_tiles.Create(tileEntity);
 			
-			// Sets tile type dependant on if the tiles are in the corner or not.
+			// Sets tiles based on their position or a random variable.
 			if (row == 0 || col == 0 || row == ROW_NUM - 1) {
 				tile.tile_type = ETileType::IMPASSABLE;
 				tileRend.CreateEntitySprite(".\\Assets\\stone.bmp", 1, 1);
 				tileCol.isTrigger = false;
-			}
-			else {
-				tile.tile_type = ETileType::OPEN;
-				tileRend.CreateEntitySprite(".\\Assets\\sand.bmp", 1, 1);
-				tileCol.isTrigger = true;
+			} else {
+				int isObstacle = std::rand() % 3; // Random number between 0 or 2. Meant to lessen some obstacles
+
+				if (!isObstacle) { // If value == 1, or 2.
+					tile.tile_type = ETileType::BREAKABLE;
+					tileRend.CreateEntitySprite(".\\Assets\\breakable.bmp", 1, 1);
+					tileCol.isTrigger = false;
+				}
+				else { // If value == 0.
+					tile.tile_type = ETileType::OPEN;
+					tileRend.CreateEntitySprite(".\\Assets\\sand.bmp", 1, 1);
+					tileCol.isTrigger = true;
+				}
 			}
 
 			// Sets position of sprite and player, and collider verticies of tile.
-			const CPoint tile_pos = CPoint(col * TILE_SIZE, row * TILE_SIZE, 0.0f, 1.0f);
+			const CPoint tile_pos = CPoint(col * TILE_SIZE - CCamera::GetPosition().x,
+				row * TILE_SIZE - CCamera::GetPosition().y, 0.0f, 1.0f);
 			tile.SetGridPosition(col, row);
 			tilePos.SetPosition(tile_pos);
 			tileCol.UpdateColliderVerticies(tile_pos + TILE_OFFSET, tileRend.spriteWidth, tileRend.spriteHeight);
@@ -48,12 +61,23 @@ void TileManager::BuildTileMap()
 	}
 }
 
+CPoint TileManager::FindSafePosition()
+{
+	for (auto entity : tile_entities) {
+		if (s_tiles.GetComponent(entity)->tile_type == ETileType::OPEN) {
+			return s_tilePositions.GetComponent(entity)->GetPosition();
+		}
+	}
+}
+
 /* Displays the built tile map. */
 void TileManager::DrawTileMap()
 {
 	for (auto entity : tile_entities) {
 		if (s_tileRenderers.Contains(entity)) {
-			s_tileRenderers.GetComponent(entity)->Render();
+			CPoint tile_position = s_tilePositions.GetComponent(entity)->GetPosition();
+			s_tileRenderers.GetComponent(entity)->Render(CPoint(tile_position.x - CCamera::GetPosition().x,
+				tile_position.y - CCamera::GetPosition().y, 0.0, 1.0f));
 		}
 	}
 }
@@ -88,6 +112,21 @@ CPoint TileManager::CheckForTileCollision(CBoxCollider col, float width, float h
 	return CPoint();
 }
 
+/* This time, breaks the tiles that are colliding and changes them to "OPEN", so if they are type "BREAKABLE" */
+void TileManager::BreakTileColliding(CBoxCollider col)
+{
+	for (auto entity : tile_entities) {
+		if (s_tileColliders.GetComponent(entity)) {
+			if (s_tileColliders.GetComponent(entity)->IsColliding(col) && s_tiles.GetComponent(entity)->tile_type == ETileType::BREAKABLE) {
+				s_tiles.GetComponent(entity)->tile_type = ETileType::OPEN;
+				s_tileRenderers.GetComponent(entity)->ChangeEntitySprite(".\\Assets\\sand.bmp", 1, 1, s_tilePositions.GetComponent(entity)->GetPosition() + TILE_OFFSET);
+				s_tileColliders.GetComponent(entity)->isTrigger = true;
+			}
+		}
+	}
+}
+
+/* When we are exiting the function. */
 void TileManager::OnExit()
 {
 	for (auto entity : tile_entities) {

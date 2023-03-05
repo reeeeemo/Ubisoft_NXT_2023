@@ -42,6 +42,13 @@ bool CPoint::operator!=(const CPoint& point) const
 	return false;
 }
 
+bool CPoint::operator<=(const CPoint& point) const
+{
+	if (x <= point.x && y <= point.y) {
+		return true;
+	}
+}
+
 void CPoint::operator+=(const CPoint& point)
 {
 	x += point.x;

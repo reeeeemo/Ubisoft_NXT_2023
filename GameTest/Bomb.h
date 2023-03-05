@@ -32,7 +32,8 @@ protected:
 	virtual void OnEnter() = 0;
 	virtual void OnExit() = 0;
 	virtual void Execute() = 0;
-
+	virtual void RenderExplosion() = 0;
+	virtual void Update() = 0;
 	/*
 	*	Variables
 	*/
@@ -41,6 +42,7 @@ protected:
 	static ComponentManager<CPosition>& s_bombPositions;
 	static ComponentManager<CEntityRenderer>& s_bombRenderers;
 	static ComponentManager<CRigidbody>& s_bombRigidbodies;
+	static ComponentManager<CCollider>& s_bombColliders;
 
 	int id;
 	float radius; // Radius of explosion, will be for all 4 ways 
@@ -48,6 +50,7 @@ protected:
 	float timer; // Time until bomb blows up.
 	bool isEnabled = false;
 	bool hasExploded = false;
+	bool stopMoving = false;
 };
 
 #endif //__BOMB_H__

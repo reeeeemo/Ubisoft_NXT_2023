@@ -33,4 +33,8 @@ namespace Math {
 		return a * (1 / std::sqrt(GetLength(a)));
 	}
 
+	inline float Distance(const CPoint& a, const CPoint& b) {
+		return (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y);
+	}
+
 }
