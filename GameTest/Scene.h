@@ -11,6 +11,8 @@
 #include "TileManager.h"
 #include "Bomb.h"
 #include "Camera.h"
+#include "Score.h"
+
 
 enum EScenes
 {

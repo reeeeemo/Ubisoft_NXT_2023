@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include "Scene.h"
 #ifndef __ENDSCENE_h__
 #define __ENDSCENE_H__
@@ -13,6 +13,7 @@ public:
 	void HandleEvents(float deltaTime) override;
 private:
 	void OnEnter() override;
+	void OnExit() override;
 };
 
 #endif // !__ENDSCENE_H__

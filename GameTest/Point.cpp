@@ -47,6 +47,23 @@ bool CPoint::operator<=(const CPoint& point) const
 	if (x <= point.x && y <= point.y) {
 		return true;
 	}
+	return false;
+}
+
+bool CPoint::operator>(const CPoint& point) const
+{
+	if (x > point.x && y > point.y) {
+		return true;
+	}
+	return false;
+}
+
+bool CPoint::operator<(const CPoint& point) const
+{
+	if (x < point.x && y < point.y) {
+		return true;
+	}
+	return false;
 }
 
 void CPoint::operator+=(const CPoint& point)

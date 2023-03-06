@@ -11,7 +11,7 @@ CRigidbody::CRigidbody()
 	drag = 1.0;
 }
 
-/* Adds a force onto the position and sends back a Point with the new position (Verlet Integration!) */
+/* Adds a force onto the position and sends back a Point with the new position (Semi-implicit Euler integration!) */
 CPoint CRigidbody::UpdateForce(CPoint position, float deltaTime)
 {
 	CPoint new_position = CPoint();

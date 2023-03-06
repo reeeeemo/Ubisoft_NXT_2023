@@ -1,1 +1,47 @@
-﻿  GameTest.vcxproj -> E:\Ascending Flags\Ubisoft_NXT_2023\x64\Debug\GameTest.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of BoxCollider.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are BoxCollider.cpp, Components\Collision\BoxCollider.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of Camera.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Camera.cpp, Components\Player\Camera.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of ClassicBomb.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are ClassicBomb.cpp, Components\Bombs\ClassicBomb.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of Collider.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Collider.cpp, Components\Collision\Collider.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of TileManager.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Components\Managers\TileManager.cpp, TileManager.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of Rigidbody.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Components\Physics\Rigidbody.cpp, Rigidbody.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of EntityRenderer.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Components\Player\EntityRenderer.cpp, EntityRenderer.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of GridPosition.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Components\Position\GridPosition.cpp, GridPosition.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of Position.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Components\Position\Position.cpp, Position.cpp.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1098,5): warning MSB8027: Two or more files with the name of Tile.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Components\Tilemap\Tile.cpp, Tile.cpp.
+  Button.cpp
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Button.cpp(5,10): fatal error C1083: Cannot open include file: 'RestartButton.h': No such file or directory
+  Camera.cpp
+  Bomb.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Bombs\Bomb.cpp': No such file or directory
+  ClassicBomb.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Bombs\ClassicBomb.cpp': No such file or directory
+  BoxCollider.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Collision\BoxCollider.cpp': No such file or directory
+  Collider.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Collision\Collider.cpp': No such file or directory
+  TileManager.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Managers\TileManager.cpp': No such file or directory
+  Rigidbody.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Physics\Rigidbody.cpp': No such file or directory
+  Camera.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Player\Camera.cpp': No such file or directory
+  EntityRenderer.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Player\EntityRenderer.cpp': No such file or directory
+  GridPosition.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Position\GridPosition.cpp': No such file or directory
+  Position.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Position\Position.cpp': No such file or directory
+  Tile.cpp
+c1xx : fatal error C1083: Cannot open source file: 'Components\Tilemap\Tile.cpp': No such file or directory
+  RestartButton.cpp
+c1xx : fatal error C1083: Cannot open source file: 'RestartButton.cpp': No such file or directory
+  Rigidbody.cpp
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\Rigidbody.cpp(28,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  TileManager.cpp
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(53,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(53,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(56,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(56,50): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(65,44): warning C4553: '==': result of expression not used; did you intend '='?
+  Generating Code...
+E:\Ascending Flags\Ubisoft_NXT_2023\GameTest\TileManager.cpp(125): warning C4715: 'TileManager::CheckForTileCollision': not all control paths return a value

@@ -31,7 +31,7 @@ void CButton::Init()
 
 	// Set Position and Collliders
 	// We only need to call these once since technically we are not going to be moving the button positions (I hope nothing "magical" happens to them o_o)
-	CPoint start_button_pos = CPoint(600.0f, 600.0f, 0.0f, 1.0f);
+	CPoint start_button_pos = CPoint(475, 400, 0.0f, 1.0f);
 	//CPoint restart_button_pos = CPoint(300.0f, 600.0f, 0.0f, 1.0f);
 	float buttonWidth = s_buttonRenderers.GetComponent(s_buttons[START]->id)->spriteWidth;
 	float buttonHeight = s_buttonRenderers.GetComponent(s_buttons[START]->id)->spriteHeight;
@@ -59,8 +59,16 @@ void CButton::Update(float deltaTime)
 		if (s_buttons[i]->isEnabled == true)
 		{
 			CheckForMouseInput(s_buttons[i]);
-			s_buttonRenderers.GetComponent(s_buttons[i]->id)->Update(deltaTime, s_buttonPositions.GetComponent(s_buttons[i]->id)->GetPosition(), true);
+			s_buttonRenderers.GetComponent(s_buttons[i]->id)->Update(deltaTime, 
+				CPoint(s_buttonPositions.GetComponent(s_buttons[i]->id)->GetPosition().x + s_buttonRenderers.GetComponent(s_buttons[i]->id)->spriteWidth / 2.0,
+					s_buttonPositions.GetComponent(s_buttons[i]->id)->GetPosition().y + s_buttonRenderers.GetComponent(s_buttons[i]->id)->spriteHeight / 2.0, 0.0, 1.0f), false);
 			s_buttonColliders.GetComponent(s_buttons[i]->id)->IsColliding(mouseX, mouseY);
+
+			if (s_buttonColliders.GetComponent(s_buttons[i]->id)->colliding == true) {
+				if (App::IsKeyPressed(MK_LBUTTON)) { // Checking for left click if our mouse is colliding
+					s_buttons[i]->Execute();
+				}
+			}
 		}
 	}
 }
@@ -74,7 +82,8 @@ void CButton::Render()
 		{
 			if (true)
 			{
-				s_buttonColliders.GetComponent(s_buttons[i]->id)->DebugDrawCollider();
+				s_buttonRenderers.GetComponent(s_buttons[i]->id)->Render();
+				//s_buttonColliders.GetComponent(s_buttons[i]->id)->DebugDrawCollider();
 			}
 		}
 	}

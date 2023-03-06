@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "TileManager.h"
 #include "Camera.h"
+#include "Score.h"
 
 /* Static variable initialization. */
 ComponentManager<CPosition>& TileManager::s_tilePositions = ComponentManager<CPosition>();
@@ -8,7 +9,7 @@ ComponentManager<CTile>& TileManager::s_tiles = ComponentManager<CTile>();
 ComponentManager<CCollider>& TileManager::s_tileColliders = ComponentManager<CCollider>();
 ComponentManager<CEntityRenderer>& TileManager::s_tileRenderers = ComponentManager<CEntityRenderer>();
 std::vector<Entity> TileManager::tile_entities;
-
+bool TileManager::isDoor = false;
 
 
 
@@ -52,9 +53,6 @@ void TileManager::BuildTileMap()
 			const CPoint tile_pos = CPoint(col * TILE_SIZE, row * TILE_SIZE, 0.0f, 1.0f);
 			tile.SetGridPosition(col, row);
 			tilePos.SetPosition(tile_pos);
-			//tileCol.UpdateColliderVerticiesWithoutDisplacement(tile_pos + TILE_OFFSET, tileRend.spriteWidth, tileRend.spriteHeight);
-			//tileCol.SetColliderVerticies(tile_pos, CPoint(tile_pos.x + TILE_SIZE, tile_pos.y, 0.0f, 1.0f),
-			//	CPoint(tile_pos.x + TILE_SIZE, tile_pos.y + TILE_SIZE, 0.0, 1.0f), CPoint(tile_pos.x, tile_pos.y + TILE_SIZE, 0.0f, 1.0f));
 			tileRend.entitySprite->SetPosition(tile_pos.x + TILE_SIZE / 2.0, tile_pos.y + TILE_SIZE / 2.0);
 		}
 	}
@@ -64,9 +62,11 @@ CPoint TileManager::FindSafePosition()
 {
 	for (auto entity : tile_entities) {
 		if (s_tiles.GetComponent(entity)->tile_type == ETileType::OPEN) {
+			s_tiles.GetComponent(entity)->tile_type == ETileType::START;
 			return s_tilePositions.GetComponent(entity)->GetPosition() + TILE_OFFSET;
 		}
 	}
+	return CPoint();
 }
 
 /* Displays the built tile map. */
@@ -112,30 +112,51 @@ void TileManager::UpdateTileMap(float deltaTime)
 }
 
 /* Checks where the position is relative to the grid and if it is colliding with a tile. Returns the point that is colliding with the tile if there is one */
-CPoint TileManager::CheckForTileCollision(CBoxCollider col, float width, float height)
+CTile* TileManager::CheckForTileCollision(CCollider* col, float width, float height)
 {
 	for (auto entity : tile_entities) {
 		if (s_tileColliders.Contains(entity)) {
 			if (s_tileColliders.GetComponent(entity)->IsColliding(col)) {
-				if (s_tileColliders.GetComponent(entity)->isTrigger == false) {
-					return s_tileColliders.GetComponent(entity)->GetOverlappingSide(col, width, height);
-				}
+				return s_tiles.GetComponent(entity);
 			}
 			
 		}
 	}
+}
+
+CPoint TileManager::CheckTileCollidingDistance(CCollider* col) {
+	CPoint distancesBetweenRects;
+	for (auto entity : tile_entities) {
+		if (s_tileColliders.Contains(entity)) {
+			if (s_tileColliders.GetComponent(entity)->IsColliding(col) && s_tileColliders.GetComponent(entity)->isTrigger == false) {
+				return s_tileColliders.GetComponent(entity)->ReturnDistanceBetweenRects(col);
+			}
+		}
+	}
+
 	return CPoint();
 }
 
 /* This time, breaks the tiles that are colliding and changes them to "OPEN", so if they are type "BREAKABLE" */
-void TileManager::BreakTileColliding(CBoxCollider col)
+void TileManager::BreakTileColliding(CCollider* col)
 {
 	for (auto entity : tile_entities) {
 		if (s_tileColliders.GetComponent(entity)) {
 			if (s_tileColliders.GetComponent(entity)->IsColliding(col) && s_tiles.GetComponent(entity)->tile_type == ETileType::BREAKABLE) {
-				s_tiles.GetComponent(entity)->tile_type = ETileType::OPEN;
-				s_tileRenderers.GetComponent(entity)->ChangeEntitySprite(".\\Assets\\sand.bmp", 1, 1, s_tilePositions.GetComponent(entity)->GetPosition() + TILE_OFFSET);
-				s_tileColliders.GetComponent(entity)->isTrigger = true;
+				CScore::UpdateObstaclesDestroyed();
+				int randomChanceDoor = rand() % 100 + 1; // Random number between 1 and 100.
+					if ((randomChanceDoor == 50 && !isDoor) || (!isDoor && CScore::GetObstaclesDestroyed() == 15)) { // If we randomly got the door or we broke atleast 15 obstacles
+						isDoor = true;
+						s_tiles.GetComponent(entity)->tile_type = ETileType::GOAL;
+						s_tileRenderers.GetComponent(entity)->ChangeEntitySprite(".\\Assets\\goal.bmp", 1, 1, s_tilePositions.GetComponent(entity)->GetPosition() + TILE_OFFSET);
+						s_tileColliders.GetComponent(entity)->isTrigger = true;
+					} 
+					else {
+					s_tiles.GetComponent(entity)->tile_type = ETileType::OPEN;
+					s_tileRenderers.GetComponent(entity)->ChangeEntitySprite(".\\Assets\\sand.bmp", 1, 1, s_tilePositions.GetComponent(entity)->GetPosition() + TILE_OFFSET);
+					s_tileColliders.GetComponent(entity)->isTrigger = true;
+					}
+				
 			}
 		}
 	}

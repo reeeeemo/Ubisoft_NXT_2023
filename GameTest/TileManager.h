@@ -23,23 +23,33 @@ public:
 	/* Destructor */
 	~TileManager() = default;
 
+	/*
+	*	Functions
+	*/
 	static void BuildTileMap();
 	static CPoint FindSafePosition();
 	static void DrawTileMap();
 	static void DebugDrawTileMap();
 	static void UpdateTileMap(float deltaTime);
-	static CPoint CheckForTileCollision(CBoxCollider col, float width, float height);
-	static void BreakTileColliding(CBoxCollider col);
+	static CTile* CheckForTileCollision(CCollider* col, float width, float height);
+	static CPoint CheckTileCollidingDistance(CCollider* col);
+	static void BreakTileColliding(CCollider* col);
 	static void OnExit();
 
 
 	TileManager(const TileManager&) = delete; // No copying by mistake.
 private:
+
+	/*
+	*	Variables
+	*/
 	static std::vector<Entity> tile_entities;
 	static ComponentManager<CTile>& s_tiles;
 	static ComponentManager<CPosition>& s_tilePositions; // Manager for all tile positions
 	static ComponentManager<CCollider>& s_tileColliders; // Manager for all tile colliders
 	static ComponentManager<CEntityRenderer>& s_tileRenderers; // Manager for all tile renderers
+
+	static bool isDoor;
 };
 
 #endif //!__TILEMANAGER_H__

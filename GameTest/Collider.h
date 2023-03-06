@@ -13,11 +13,11 @@ public:
 	 *  Functions
 	 */
 	void SetColliderVerticies(CPoint p1, CPoint p2, CPoint p3, CPoint p4);
-	bool IsColliding(CBoxCollider otherCollider);
+	bool IsColliding(CCollider* otherCollider);
 	bool IsColliding(float x, float y);
+	CPoint ReturnDistanceBetweenRects(CCollider* otherCollider);
 	void DebugDrawCollider() const;
 	void UpdateColliderVerticies(CPoint position, float width, float height);
-	void UpdateColliderVerticiesWithoutDisplacement(CPoint position, float width, float height);
 	void UpdateColliderVerticiesWithRadius(CPoint position, float width, float height, float radius, bool isVertical);
 	CPoint GetOverlappingSide(CBoxCollider otherCollider, float width, float height);
 
@@ -25,6 +25,8 @@ public:
 	 *  Variables
 	 */
 	bool colliding = false;
+	bool isLeftColliding = false; // Good to find out when needed to readjust.
+	bool isBottomColliding = false;
 	bool isTrigger = false; // Is it used for just triggering events / actions.
 	CBoxCollider collider;
 private:

@@ -7,22 +7,34 @@
 
 
 /* Using AABB Collision, seeing if one rectangle in another. */
-bool CCollider::IsColliding(CBoxCollider otherCollider)
+bool CCollider::IsColliding(CCollider* otherCollider)
 {
-	/* If col1.x <= col2.x + col2.w
-	 * If col1.x + col1.w >= col2.x
-	 * If col1.y <= col2.y + col2.h
-	 * If col1.y + col1.h >= col2.y
+	/* If top left X (rect 1) is less than top right X (rect 2)
+	 * If bottom right X (rect 1) is greater than bottom left X (rect 2)
+	 * If bottom left Y (rect 1) is less than top right Y (rect 2)
+	 * If top right Y (rect 1) is greater than bottom right Y (rect 2)
 	 */ 
-	if (collider.p2.x <= otherCollider.p2.x &&
-		collider.p4.x >= otherCollider.p1.x &&
-		collider.p1.y <= otherCollider.p3.y &&
-		collider.p3.y >= otherCollider.p4.y)
+	if (collider.p2.x > otherCollider->collider.p1.x &&
+		collider.p2.x < otherCollider->collider.p2.x &&
+		collider.p3.y > otherCollider->collider.p4.y &&
+		collider.p4.y < otherCollider->collider.p4.y)
 	{
 		colliding = true;
+		otherCollider->colliding = true;
+		return true;
+	}
+
+	if (collider.p2.x > otherCollider->collider.p2.x &&
+		collider.p1.x < otherCollider->collider.p2.x &&
+		collider.p3.y > otherCollider->collider.p4.y &&
+		collider.p4.y < otherCollider->collider.p3.y)
+	{
+		colliding = true;
+		otherCollider->colliding = true;
 		return true;
 	}
 	
+	otherCollider->colliding = false;
 	colliding = false;
 	return false;
 }
@@ -30,6 +42,7 @@ bool CCollider::IsColliding(CBoxCollider otherCollider)
 
 
 /* Looking for the x and y coordinate inbetween the box collider. */
+/* Also known as point vs rect collision. */
 bool CCollider::IsColliding(float x, float y)
 {
 	if (collider.p1.x < x &&
@@ -42,6 +55,46 @@ bool CCollider::IsColliding(float x, float y)
 	}
 	colliding = false;
 	return false;
+}
+
+/* Finds the distance between all sides of rect, if any are negative then return the collision. Only called when colliding, so we do not have to worry about checking that. */
+CPoint CCollider::ReturnDistanceBetweenRects(CCollider* otherCollider)
+{
+	float distance = 1.0f;
+	float tempX = 0.0f;
+	float tempY = 0.0f;
+
+	
+
+	// Distance between left side of the rect.
+	if (collider.p2.x > otherCollider->collider.p1.x && otherCollider->collider.p2.x > collider.p2.x) {
+		distance = collider.p2.x - otherCollider->collider.p1.x;
+		tempX = distance;
+		otherCollider->isLeftColliding = true;
+	}
+	// Distance between right side of the rect
+	if (collider.p1.x < otherCollider->collider.p2.x && otherCollider->collider.p2.x < collider.p2.x) {
+		distance = collider.p1.x - otherCollider->collider.p1.x;
+		tempX = distance;
+		otherCollider->isLeftColliding = false;
+	}
+
+	// Distance between bottom (1st rect) hitting the top (2nd rect) of the rect
+	if (collider.p3.y > otherCollider->collider.p4.y && collider.p4.y < otherCollider->collider.p4.y) {
+		distance = collider.p3.y - otherCollider->collider.p4.y;
+
+		tempY = distance;
+		otherCollider->isBottomColliding = true;
+	}
+
+	// Distance between top (1st rect) hitting the bottom (2nd rect) of the rect
+	if (collider.p4.y < otherCollider->collider.p3.y && collider.p3.y > otherCollider->collider.p4.y) {
+		distance = otherCollider->collider.p3.y - collider.p4.y;
+		tempY = distance;
+		otherCollider->isBottomColliding = false;
+	}
+
+	return CPoint(tempX, tempY, 0.0f, 1.0f);
 }
 
 /* Draws the collision outline for debug view. */
@@ -59,6 +112,8 @@ void CCollider::DebugDrawCollider() const
 	App::DrawLine(collider.p2.x, collider.p2.y, collider.p3.x, collider.p3.y, r, g, b);
 	App::DrawLine(collider.p3.x, collider.p3.y, collider.p4.x, collider.p4.y, r, g, b);
 	App::DrawLine(collider.p4.x, collider.p4.y, collider.p1.x, collider.p1.y, r, g, b);
+	App::DrawLine(collider.p3.x, collider.p3.y, collider.p1.x, collider.p1.y, r, g, b);
+	App::DrawLine(collider.p4.x, collider.p4.y, collider.p2.x, collider.p2.y, r, g, b);
 
 }
 
@@ -66,26 +121,22 @@ void CCollider::UpdateColliderVerticies(CPoint position, float width, float heig
 {
 	CPoint displaced_position = CPoint(CCamera::DisplaceObject(position).x - TILE_SIZE / 2,
 		CCamera::DisplaceObject(position).y - TILE_SIZE / 2, 0.0, 1.0f);
-	SetColliderVerticies(displaced_position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), displaced_position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
-		displaced_position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), displaced_position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
+	SetColliderVerticies(displaced_position + CPoint(-width / 2.0, 0.0f, 0.0f, 1.0f), displaced_position + CPoint(width / 2.0, 0.0, 0.0, 1.0f),
+		displaced_position + CPoint(0.0, height / 2.0, 0.0, 1.0f), displaced_position + CPoint(0.0, -height / 2.0, 0.0, 1.0f));
 }
 
-void CCollider::UpdateColliderVerticiesWithoutDisplacement(CPoint position, float width, float height)
-{
-	SetColliderVerticies(position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
-		position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
-}
 
 void CCollider::UpdateColliderVerticiesWithRadius(CPoint position, float width, float height, float radius, bool isVertical)
 {
 	if (isVertical) { // If we are making this rectangle on vertical axis.
 		height *= radius;
+		width *= radius;
 	}
 	else { // If we are making this rectangle on horizontal axis.
 		width *= radius;
 	}
-	SetColliderVerticies(position + CPoint(-width / 2.0, -height / 2.0, 0.0f, 1.0f), position + CPoint(-width / 2.0, height / 2.0f, 0.0, 1.0f),
-		position + CPoint(width / 2.0, height / 2.0, 0.0, 1.0f), position + CPoint(width / 2.0f, -height / 2.0, 0.0, 1.0f));
+	SetColliderVerticies(position + CPoint(-width / 2.0,0.0, 0.0f, 1.0f), position + CPoint(width / 2.0, 0.0, 0.0, 1.0f),
+		position + CPoint(0.0, height / 2.0, 0.0, 1.0f), position + CPoint(0.0, -height / 2.0, 0.0, 1.0f));
 	
 }
 

@@ -5,6 +5,8 @@
 
 #include "Scene.h"
 
+const int NEXT_ENEMY_TIME = 25.0f;
+
 class CMainScene : public CScene
 {
 public:
@@ -24,6 +26,7 @@ private:
 	*/
 	CPoint plrSpeed = CPoint();
 	EBombs current_bomb = EBombs::CLASSIC;
+	float timerUntilNextEnemy = 0;
 };
 
 #endif // !__MAINSCENE_H__

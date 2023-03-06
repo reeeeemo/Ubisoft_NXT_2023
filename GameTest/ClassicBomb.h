@@ -14,7 +14,7 @@ class CClassicBomb : public CBomb
 	void OnExit() override;
 	void Execute() override;
 	void RenderExplosion() override;
-	void Update() override;
+	void Update(float deltaTime) override;
 	/*
 	*	Variables
 	*/

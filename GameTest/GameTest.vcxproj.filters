@@ -70,19 +70,49 @@
     <ClCompile Include="GridPosition.cpp">
       <Filter>Components\Positions</Filter>
     </ClCompile>
-    <ClCompile Include="Bomb.cpp">
-      <Filter>Components\Bombs</Filter>
-    </ClCompile>
     <ClCompile Include="ClassicBomb.cpp">
       <Filter>Components\Bombs</Filter>
     </ClCompile>
     <ClCompile Include="EntityRenderer.cpp">
-      <Filter>Components</Filter>
+      <Filter>Components\Player</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Components</Filter>
+      <Filter>Components\Player</Filter>
     </ClCompile>
-    <ClCompile Include="XBomb.cpp">
+    <ClCompile Include="Score.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Bombs\Bomb.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Bombs\ClassicBomb.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Collision\BoxCollider.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Collision\Collider.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Managers\TileManager.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Physics\Rigidbody.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Player\Camera.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Player\EntityRenderer.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Position\GridPosition.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Position\Position.cpp">
+      <Filter>Components\Bombs</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Tilemap\Tile.cpp">
       <Filter>Components\Bombs</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,12 +159,6 @@
     <ClInclude Include="MainScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityRenderer.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Math\Components</Filter>
     </ClInclude>
@@ -174,16 +198,61 @@
     <ClInclude Include="GridPosition.h">
       <Filter>Components\Positions</Filter>
     </ClInclude>
-    <ClInclude Include="Bomb.h">
-      <Filter>Components\Bombs</Filter>
-    </ClInclude>
     <ClInclude Include="ClassicBomb.h">
       <Filter>Components\Bombs</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Components</Filter>
+    <ClInclude Include="Entity.h">
+      <Filter>Components\Player</Filter>
     </ClInclude>
-    <ClInclude Include="XBomb.h">
+    <ClInclude Include="EntityRenderer.h">
+      <Filter>Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Bombs\Bomb.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Bombs\ClassicBomb.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Collision\BoxCollider.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Collision\Collider.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Managers\ComponentManager.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Physics\Rigidbody.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Player\Camera.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Player\Entity.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Player\EntityRenderer.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Position\GridPosition.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Position\Position.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Tilemap\Tile.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Tilemap\TileManager.h">
+      <Filter>Components\Bombs</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Tilemap\TileTypes.h">
       <Filter>Components\Bombs</Filter>
     </ClInclude>
   </ItemGroup>
@@ -226,6 +295,9 @@
     </Filter>
     <Filter Include="Components\Bombs">
       <UniqueIdentifier>{2c04c5d4-a2c5-48a9-b833-a05b1edc4029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Player">
+      <UniqueIdentifier>{6b2d557d-f95c-4c62-9411-bc76a8d69d8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

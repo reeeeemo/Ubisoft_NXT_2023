@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ClassicBomb.h"
 #include "TileManager.h"
+#include "Camera.h"
 
 /* When we create the object, or respawn it in. */
 void CClassicBomb::OnEnter()
@@ -24,13 +25,15 @@ void CClassicBomb::OnEnter()
 	s_bombRenderers.GetComponent(horizontalRect)->CreateEntitySprite(".\\Assets\\explosion.bmp", 1, 1);
 	s_bombRenderers.GetComponent(verticalRect)->ChangeScale(0.7f);
 	s_bombRenderers.GetComponent(horizontalRect)->ChangeScale(0.7f);
-
+	
 
 	// Initial vertical collider
-	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(id)->GetPosition(),
+	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(CCamera::DisplaceObject(CPoint(s_bombPositions.GetComponent(id)->x + s_bombRenderers.GetComponent(id)->spriteWidth / 2,
+		s_bombPositions.GetComponent(id)->y + s_bombRenderers.GetComponent(id)->spriteHeight / 2, 0.0, 1.0f)) - TILE_OFFSET,
 		s_bombRenderers.GetComponent(id)->spriteWidth, s_bombRenderers.GetComponent(id)->spriteHeight, radius, true);
 	// Initial horizontal collider
-	s_bombColliders.GetComponent(horizontalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(id)->GetPosition(),
+	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(CCamera::DisplaceObject(CPoint(s_bombPositions.GetComponent(id)->x + s_bombRenderers.GetComponent(id)->spriteWidth / 2,
+		s_bombPositions.GetComponent(id)->y + s_bombRenderers.GetComponent(id)->spriteHeight / 2, 0.0, 1.0f)) - TILE_OFFSET,
 		s_bombRenderers.GetComponent(id)->spriteWidth, s_bombRenderers.GetComponent(id)->spriteHeight, radius, false);
 
 
@@ -52,19 +55,13 @@ void CClassicBomb::OnExit()
 void CClassicBomb::Execute()
 {
 	// Look at collisions with the vertical tiles.
-	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(verticalRect)->GetPosition() + TILE_OFFSET,
-		s_bombRenderers.GetComponent(verticalRect)->spriteWidth, s_bombRenderers.GetComponent(verticalRect)->spriteHeight, radius, true);
-		TileManager::BreakTileColliding(s_bombColliders.GetComponent(verticalRect)->collider);
+		TileManager::BreakTileColliding(s_bombColliders.GetComponent(verticalRect));
 	
 	// Look at collision with the middle tile.
-		s_bombColliders.GetComponent(id)->UpdateColliderVerticies(s_bombPositions.GetComponent(id)->GetPosition() + TILE_OFFSET,
-			s_bombRenderers.GetComponent(id)->spriteWidth, s_bombRenderers.GetComponent(id)->spriteHeight);
-		TileManager::BreakTileColliding(s_bombColliders.GetComponent(id)->collider);
+		TileManager::BreakTileColliding(s_bombColliders.GetComponent(id));
 
 	// Look at collision with the horizontal tiles.
-	s_bombColliders.GetComponent(horizontalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(horizontalRect)->GetPosition() + TILE_OFFSET,
-		s_bombRenderers.GetComponent(horizontalRect)->spriteWidth, s_bombRenderers.GetComponent(horizontalRect)->spriteHeight, radius, false);
-	TileManager::BreakTileColliding(s_bombColliders.GetComponent(horizontalRect)->collider);
+	TileManager::BreakTileColliding(s_bombColliders.GetComponent(horizontalRect));
 
 }
 
@@ -77,19 +74,22 @@ void CClassicBomb::RenderExplosion() {
 }
 
 /* Updates bomb's positions and the other components. */
-void CClassicBomb::Update()
+void CClassicBomb::Update(float deltaTime)
 {
 	s_bombPositions.GetComponent(verticalRect)->SetPosition(s_bombPositions.GetComponent(id)->GetPosition());
 	s_bombPositions.GetComponent(horizontalRect)->SetPosition(s_bombPositions.GetComponent(id)->GetPosition());
-	s_bombRenderers.GetComponent(verticalRect)->entitySprite->SetPosition(s_bombPositions.GetComponent(id)->GetPosition().x, s_bombPositions.GetComponent(id)->GetPosition().y + s_bombRenderers.GetComponent(id)->spriteHeight / 2.0f);
-	s_bombRenderers.GetComponent(horizontalRect)->entitySprite->SetPosition(s_bombPositions.GetComponent(id)->GetPosition().x + s_bombRenderers.GetComponent(id)->spriteWidth / 2.0f, s_bombPositions.GetComponent(id)->GetPosition().y);
+	s_bombRenderers.GetComponent(verticalRect)->Update(deltaTime, CCamera::DisplaceObject(CPoint(s_bombPositions.GetComponent(id)->GetPosition().x, s_bombPositions.GetComponent(id)->GetPosition().y + s_bombRenderers.GetComponent(id)->spriteHeight / 2.0f, 0.0, 1.0f)), true);
+	s_bombRenderers.GetComponent(horizontalRect)->Update(deltaTime, CCamera::DisplaceObject(CPoint(s_bombPositions.GetComponent(id)->GetPosition().x, s_bombPositions.GetComponent(id)->GetPosition().y + s_bombRenderers.GetComponent(id)->spriteHeight / 2.0f, 0.0, 1.0f)), true);
 
-	// Look at vertical tiles
-	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(verticalRect)->GetPosition(),
+
+	//
+
+	// Look at vertical colliders
+	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(CCamera::DisplaceObject(CPoint(s_bombPositions.GetComponent(verticalRect)->x + s_bombRenderers.GetComponent(verticalRect)->spriteWidth / 2,
+		s_bombPositions.GetComponent(verticalRect)->y + s_bombRenderers.GetComponent(verticalRect)->spriteHeight / 2, 0.0, 1.0f)) - TILE_OFFSET,
 		s_bombRenderers.GetComponent(verticalRect)->spriteWidth, s_bombRenderers.GetComponent(verticalRect)->spriteHeight, radius, true);
-
-
-	// Look at horizontal tiles.
-	s_bombColliders.GetComponent(horizontalRect)->UpdateColliderVerticiesWithRadius(s_bombPositions.GetComponent(horizontalRect)->GetPosition(),
-		s_bombRenderers.GetComponent(horizontalRect)->spriteWidth, s_bombRenderers.GetComponent(horizontalRect)->spriteHeight, radius, false);
+	// Look at horizontal colliders
+	s_bombColliders.GetComponent(verticalRect)->UpdateColliderVerticiesWithRadius(CCamera::DisplaceObject(CPoint(s_bombPositions.GetComponent(horizontalRect)->x + s_bombRenderers.GetComponent(horizontalRect)->spriteWidth / 2,
+		s_bombPositions.GetComponent(horizontalRect)->y + s_bombRenderers.GetComponent(horizontalRect)->spriteHeight / 2, 0.0, 1.0f)) - TILE_OFFSET,
+		s_bombRenderers.GetComponent(horizontalRect)->spriteWidth, s_bombRenderers.GetComponent(horizontalRect)->spriteHeight, radius, true);
 }

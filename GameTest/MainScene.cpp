@@ -4,7 +4,6 @@
 #include <string>
 
 
-
 void CMainScene::Update(float deltaTime)
 {
 	TileManager::UpdateTileMap(deltaTime);
@@ -43,20 +42,40 @@ void CMainScene::Update(float deltaTime)
 
 			s_rigidbodies.GetComponent(entity)->AddForce(plrSpeed, deltaTime);
 
-			// Checking tile collision to see if we hit a wall.
-			CPoint collidingSide = TileManager::CheckForTileCollision(s_colliders.GetComponent(entity)->collider,
+			// Checking tile collision to see if we hit fga wall.
+			CTile* collidingTile = TileManager::CheckForTileCollision(s_colliders.GetComponent(entity),
 				s_renderers.GetComponent(entity)->spriteWidth, s_renderers.GetComponent(entity)->spriteHeight);
 
-
-
-			// Get direction from colliding side to the position of our character, and then add a impulse force.
-			if (collidingSide != CPoint(0.0, 0.0, 0.0, 1.0f)) {
-				//new_pos = current_pos;
-				CPoint directionAwayFromWall = new_pos - collidingSide;
-				s_rigidbodies.GetComponent(entity)->AddForce((directionAwayFromWall * 0.0001), deltaTime);
+			// If we found the goal.
+			if (collidingTile->tile_type == ETileType::GOAL) {
+				CScene::ChangeScenes(END);
+				CScore::SetRenderFinalScore(true);
+				CScore::playerWon = true;
+				break;
 			}
 
 			
+			new_pos = s_rigidbodies.GetComponent(entity)->UpdateForce(current_pos, deltaTime);
+
+			// Checking entity collision
+			s_colliders.GetComponent(entity)->UpdateColliderVerticies(new_pos, s_renderers.GetComponent(entity)->spriteWidth,
+				s_renderers.GetComponent(entity)->spriteHeight);
+
+			CPoint collidingDistance = TileManager::CheckTileCollidingDistance(s_colliders.GetComponent(entity));
+
+			if (s_colliders.GetComponent(entity)->colliding == true) {
+				s_rigidbodies.GetComponent(entity)->velocity = CPoint();
+
+				if (s_colliders.GetComponent(entity)->isLeftColliding || !s_colliders.GetComponent(entity)->isBottomColliding) {
+					s_rigidbodies.GetComponent(entity)->AddForce(collidingDistance * 0.0005, deltaTime);
+
+				}
+				else {
+					s_rigidbodies.GetComponent(entity)->AddForce(collidingDistance * -0.0005, deltaTime);
+				}
+			}
+
+			// Setting entity properties.
 			new_pos = s_rigidbodies.GetComponent(entity)->UpdateForce(current_pos, deltaTime);
 
 
@@ -82,45 +101,33 @@ void CMainScene::Update(float deltaTime)
 void CMainScene::Render()
 {
 	TileManager::DrawTileMap();
-	TileManager::DebugDrawTileMap();
 
 	for (Entity entity : s_entities)
 	{
 		if (s_renderers.Contains(entity) && s_colliders.Contains(entity)) {
 			s_renderers.GetComponent(entity)->Render();
-			s_colliders.GetComponent(entity)->DebugDrawCollider();
+			//s_colliders.GetComponent(entity)->DebugDrawCollider();
 		}
 	}
 	if (current_bomb == EBombs::CLASSIC) {
 		App::Print(800, 30, "Current Bomb: CLASSIC");
 	}
-	else {
-		App::Print(800, 30, "Current Bomb: XBOMB");
-	}
+	CScore::RenderScore();
+
 }
 
 void CMainScene::HandleEvents(float deltaTime)
 {
-	if (App::IsKeyPressed('2')) {
-		CScene::ChangeScenes(MAIN_MENU);
-	}
-	
 	// Don't run anything past here if we don't got a rigidbody or renderer.
 	if (!(s_renderers.Contains(player) && s_rigidbodies.Contains(player))) {
 		return;
 	}
 
 	if (App::IsKeyPressed(MK_RBUTTON)) { // If player pressed the "right mouse button"
+		current_bomb = EBombs::CLASSIC;
 		CPoint mouse_pos = CPoint();
 		App::GetMousePos(mouse_pos.x, mouse_pos.y);
 		CBomb::PlaceBomb(s_positions.GetComponent(player)->GetPosition(), mouse_pos + CCamera::GetPosition(), current_bomb, deltaTime);
-	}
-
-	if (App::IsKeyPressed('1')) { // If player presses "1" on their keyboard
-		current_bomb = EBombs::XBOMB;
-	}
-	if (App::IsKeyPressed('3')) { // If player presses "3" on their keyboard
-		current_bomb = EBombs::CLASSIC;
 	}
 
 	if (App::IsKeyPressed('W')) // If player presses the "up" key
@@ -208,6 +215,7 @@ void CMainScene::OnEnter()
 	plr_renderer->ChangeScale(0.7f);
 	s_gridPositions.GetComponent(player)->SetGridPosition(safePosition);
 	CCamera::Init();
+	CScore::Init();
 }
 
 void CMainScene::OnExit() {
@@ -224,6 +232,6 @@ void CMainScene::OnExit() {
 		s_entities.erase(s_entities.begin() + vectorIterator);
 		vectorIterator++;
 	}
-
+	CScore::Exit();
 	TileManager::OnExit();
 }

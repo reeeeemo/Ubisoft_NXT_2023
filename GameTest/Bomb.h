@@ -7,7 +7,6 @@
 
 enum EBombs {
 	CLASSIC,
-	XBOMB,
 	NUM_BOMBS
 };
 
@@ -34,7 +33,7 @@ protected:
 	virtual void OnExit() = 0;
 	virtual void Execute() = 0;
 	virtual void RenderExplosion() = 0;
-	virtual void Update() = 0;
+	virtual void Update(float deltaTime) = 0;
 	/*
 	*	Variables
 	*/
