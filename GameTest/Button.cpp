@@ -2,7 +2,6 @@
 #include "Button.h"
 
 #include "StartButton.h"
-#include "RestartButton.h"
 #include "Scene.h"
 
 // Static variables initialization
@@ -17,9 +16,7 @@ float CButton::mouseY;
 void CButton::Init()
 {
 	s_buttons[START] = new CStartButton;
-	s_buttons[RESTART] = new CRestartButton;
 	s_buttons[START]->id = CreateEntity();
-	s_buttons[RESTART]->id = CreateEntity();
 
 	// Creating components for each button (we don't need to check if they contain since they never existed before this.
 	s_buttonColliders.Create(s_buttons[START]->id);

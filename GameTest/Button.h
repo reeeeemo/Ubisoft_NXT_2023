@@ -9,7 +9,6 @@
 enum EButtons
 {
 	START,
-	RESTART,
 	NUM_BUTTONS
 };
 
